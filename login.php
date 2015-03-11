@@ -78,7 +78,10 @@ session_destroy();
       } 
       html, body{
         height: 100%;
-
+      }
+      .img-header {
+        padding-left: 10px;
+        padding-right: 5px;
       }           
 
 
@@ -89,7 +92,8 @@ session_destroy();
 
     <div class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
-      <a class="navbar-brand pull-left" href="#">Sistema de control ambiental vitivinicola</a>
+      <img class="pull-left img-header" src="img/logo_romero_small.png" alt="Logo">  
+      <a class="navbar-brand" href="#">Sistema de Control ambiental</a>
       </div>
     </div><!--.navbar-->
 

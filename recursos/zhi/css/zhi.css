@@ -137,6 +137,11 @@ outline: none;
 margin-left: -1px;
 }
 
+.img-header {
+padding-left: 10px;
+padding-right: 5px;
+} 
+
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */

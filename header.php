@@ -1,7 +1,7 @@
  <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.php">Sistema de Control de Horas</a>
+          <a class="navbar-brand" href="index.php">Sistema de control de ambiental vitivinicola</a>
         </div>
         <div class="navbar-form navbar-right">
           <div class="btn-group">

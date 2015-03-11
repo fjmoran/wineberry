@@ -8,7 +8,7 @@ session_destroy();
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Sistema de Control de Horas - Ingreso</title>
+    <title>Sistema de control ambiental vitivinicola</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -35,11 +35,15 @@ session_destroy();
         font-size:24px;
       }
 
+      .navbar {
+          border-radius: 0 !important;
+      }
+
       .form-signin {
         max-width: 300px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.7);
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
            -moz-border-radius: 5px;
@@ -59,19 +63,37 @@ session_destroy();
         margin-bottom: 15px;
         padding: 7px 9px;
       }
+      .bg-image
+      {
+        background-color: #fefefe;  
+        background: url('img/back.jpg');
+        background-size: 100%;
+        height: 100%;        
+      }
+      .navbar {
+        margin-bottom: 0px !important;
+      }
+      .form-signin {
+        margin: 40px auto 20px !important;
+      } 
+      html, body{
+        height: 100%;
+
+      }           
+
 
     </style> 
   </head>
 
   <body>
 
-    <div class="navbar navbar-default" role="navigation">
+    <div class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
-      <a class="navbar-brand pull-left" href="#">Sistema de Control de Horas</a>
+      <a class="navbar-brand pull-left" href="#">Sistema de control ambiental vitivinicola</a>
       </div>
     </div><!--.navbar-->
 
-    <div class="container">
+    <div class="col-md-12 bg-image">
 
       <form class="form-signin" name="login" action="recursos/zhi/controlv2.php" method="post">
         <h2 class="form-signin-heading">Acceso</h2>

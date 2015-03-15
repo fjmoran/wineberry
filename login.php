@@ -68,7 +68,7 @@ session_destroy();
         background-color: #fefefe;  
         background: url('img/back.jpg');
         background-size: 100%;
-        height: 100%;        
+        height: 100%;    
       }
       .navbar {
         margin-bottom: 0px !important;
@@ -82,7 +82,11 @@ session_destroy();
       .img-header {
         padding-left: 10px;
         padding-right: 5px;
-      }           
+      }
+      .col-12 {
+        width: 100%;
+        float: left;
+      }         
 
 
     </style> 
@@ -97,7 +101,7 @@ session_destroy();
       </div>
     </div><!--.navbar-->
 
-    <div class="col-md-12 bg-image">
+    <div class="col-sm-12 col-12 bg-image">
 
       <form class="form-signin" name="login" action="recursos/zhi/controlv2.php" method="post">
         <h2 class="form-signin-heading">Acceso</h2>

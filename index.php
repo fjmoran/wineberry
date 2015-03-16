@@ -48,7 +48,7 @@ require ("recursos/zhi/auth.php");
 	</div>
 
 	<?php
-	include('footer.php');
+	 // include('footer.php');
 	?>
 
 <iframe name="IframeOutput" class="hide"></iframe>

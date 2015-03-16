@@ -1,11 +1,11 @@
 <?php
-require ("recursos/zhi/auth.php");
+require "recursos/zhi/auth.php";
 ?>	
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Sistema de control ambiental vitivinicola</title>
+    <title>Sistema de Control de Horas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="recursos/bootstrap3/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -19,7 +19,7 @@ require ("recursos/zhi/auth.php");
     <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
     <!-- Fav Icon -->    
     <link href="img/favicon.ico" rel="SHORTCUT ICON">
-
+    <!-- jquery -->  
     <script src="recursos/jquery/jquery-1.10.2.min.js"></script> 
 
   </head>
@@ -32,36 +32,26 @@ require ("recursos/zhi/auth.php");
 	<div id="cuerpo">
 
    <?php 
-   /*
-    echo "<div class='alert alert-danger alert-dismissable col-md-8'> <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
-		echo "Flag de manejo de variables = ";
-		echo count($_SESSION) ."</br>";
-		echo "user = ".$_SESSION[userUsuario]."</br>";
-		echo "nombre = ".$_SESSION[nombreUsuario]."</br>";
-		echo "id = ".$_SESSION[idUsuario]."</br>";
-		echo "idperfil = ".$_SESSION[idperfilUsuario]."</br>";
-		echo "</div>"; */
 		
-   include('pages/default.php'); 
+   include('pages_informes/default.php'); 
    ?>
 
 	</div>
 
 	<?php
-	 // include('footer.php');
+	// include('footer.php');
 	?>
 
 <iframe name="IframeOutput" class="hide"></iframe>
 
  <!-- javascript
   ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-   
+  <!-- Placed at the end of the document so the pages load faster -->   
   <script src="recursos/bootstrap3/js/bootstrap.min.js"></script>
   <script src="recursos/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>  
   <script src="recursos/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
-  <script src="recursos/form-validator/jquery.form-validator.js"></script>
-  <script src="recursos/CryptoJSv3/rollups/sha1.js"></script>
+  <script src="recursos/highcharts/js/highcharts.js"></script>
+  <script src="recursos/highcharts/js/modules/exporting.js"></script>
   
   <script type="text/javascript"> 
     
@@ -73,14 +63,8 @@ require ("recursos/zhi/auth.php");
           $('ul.bs-sidenav > li').removeClass('active');
           $(this).addClass('active');                
       }); 
-      /* Carousel init */
-      $('.carousel').carousel({
-        interval: 4500
-      });
 
-      $('.carousel').carousel('cycle');
-      
-       jQuery(function($){
+      jQuery(function($){
               $.datepicker.regional['es'] = {
                       closeText: 'Cerrar',
                       prevText: '&#x3c;Ant',
@@ -100,7 +84,7 @@ require ("recursos/zhi/auth.php");
                       showMonthAfterYear: false,
                       yearSuffix: ''};
               $.datepicker.setDefaults($.datepicker.regional['es']);
-      }); 
+      });       
 
     })
   </script>

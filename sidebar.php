@@ -8,20 +8,10 @@ require_once("recursos/zhi/funciones.php");
   <div class="col-md-2">
     <div class="bs-sidebar">
       <ul class="nav bs-sidenav">
-        <li class="nav-header">Ingreso</li>
-        <li onclick="$('#cuerpo').load('pages/ing_trabajos.php');"><a href="#ing_trabajos"><span class="glyphicon glyphicon-chevron-right"></span> Trabajos</a></li>
-        <li onclick="$('#cuerpo').load('pages/ing_gastos.php');"><a href="#ing_gastos"><span class="glyphicon glyphicon-chevron-right"></span> Gastos</a></li>
-        <li onclick="$('#cuerpo').load('pages/ing_abonos.php');"><a href="#ing_abonos"><span class="glyphicon glyphicon-chevron-right"></span> Abonos</a></li> 
-        <li class="nav-header">Clientes</li>
-        <li onclick="$('#cuerpo').load('pages/cli_buscar.php');"><a href="#cli_buscar"><span class="glyphicon glyphicon-chevron-right"></span> Buscar</a></li>
-        <li onclick="$('#cuerpo').load('pages/cli_crear.php');"><a href="#cli_crear"><span class="glyphicon glyphicon-chevron-right"></span> Crear</a></li>
-        <li onclick="$('#cuerpo').load('pages/cli_contacto.php');"><a href="#cli_contacto"><span class="glyphicon glyphicon-chevron-right"></span> Agregar contacto</a></li>                          
-        <li class="nav-header">Contactos</li>
-        <li onclick="$('#cuerpo').load('pages/cto_buscar.php');"><a href="#cto_buscar"><span class="glyphicon glyphicon-chevron-right"></span> Buscar</a></li>
-        <li onclick="$('#cuerpo').load('pages/cto_crear.php');"><a href="#cto_crear"><span class="glyphicon glyphicon-chevron-right"></span> Crear</a></li>
-        <li class="nav-header">Facturación</li>
-        <li onclick="$('#cuerpo').load('pages/default.php');"><a href="#fact_nueva"><span class="glyphicon glyphicon-chevron-right"></span> Nueva factura</a></li>
-        <li onclick="$('#cuerpo').load('pages/default.php');"><a href="#fact_buscar"><span class="glyphicon glyphicon-chevron-right"></span> Buscar facturas</a></li>              
+        <li class="nav-header">Informes</li>
+        <li onclick="$('#cuerpo').load('pages_informes/placeholder.php');"><a href="#inf_tempamb"><span class="glyphicon glyphicon-chevron-right"></span> Tº ambiental por hora</a></li>
+        <li onclick="$('#cuerpo').load('pages_informes/placeholder.php');"><a href="#inf_tempcuba"><span class="glyphicon glyphicon-chevron-right"></span> Tº cubas por hora</a></li>
+        <li onclick="$('#cuerpo').load('pages_informes/placeholder.php');"><a href="#inf_mapa"><span class="glyphicon glyphicon-chevron-right"></span> Mapa de sensores</a></li>        
       </ul>
     </div>
   </div>
@@ -40,6 +30,7 @@ require_once("recursos/zhi/funciones.php");
         }
       ?>
     </div>
+
    </div>
 
  <div class="row" id="main-box">

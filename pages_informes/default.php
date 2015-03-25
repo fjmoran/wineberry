@@ -1,33 +1,46 @@
 <div class="col-md-11">
- 	<h2>Cuadro de Mando</h2>
- 	<h5>Esto es un texto de demo.</h5>
- 	<div class="row">
-	 	<div class="col-md-6">
-	 		<h5>Titulo 1<a href="#chart_01_full"><span class="glyphicon glyphicon-resize-full pull-right" style="color: black;" onclick="$('#cuerpo').load('pages_informes/chart_01_full.php');"></span></a></h5>
-	 		<div class="graph-report" id="container1">
-	 			<?php include "pages_informes/chart_01.php"; ?>	
-	 		</div>
+ 	<h2>Panel de temperaturas actuales</h2>
+ 	</br>
+ 	<div class="row bs-sidenav">
+ 		<div class="col-md-12">
+ 			<h4>Temperatura ambiental</h4>
+ 		</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 001 - Galpón norte</h5>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">24ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>
 	 	</div>
-	 	<div class="col-md-6">
-	 		<h5>Titulo 2<a href="#chart_02_full"><span class="glyphicon glyphicon-resize-full pull-right" style="color: black;" onclick="$('#cuerpo').load('pages_informes/chart_02_full.php');"></span></a></h5>
-	 		<div class="graph-report" id="container2">
-	 			<?php include "pages_informes/chart_02.php"; ?>	
-	 		</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 002 - Galpón sur</h5>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">25ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>
 	 	</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 003 - Exterior</h5>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">29ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 	</div>	 	
+	</div>
+	
+ 	<div class="row bs-sidenav">
+ 		<div class="col-md-12">
+ 			<h4>Temperatura cubas</h4>
+ 		</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 003 - Cuba 1 - 15.000 lts</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">12ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 	</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 004 - Cuba 2 - 30.000 lts</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">10ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 	</div>
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Sensor 005 - Cuba 3 - 20.000 lts</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">11ºC</button>
+	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 	</div>	 	
 	 </div>
- 	<div class="row">
-	 	<div class="col-md-6">
-	 		<h5>Titulo 3<a href="#chart_03_full"><span class="glyphicon glyphicon-resize-full pull-right" style="color: black;" onclick="$('#cuerpo').load('pages_informes/chart_03_full.php');"></span></a></h5>
-	 		<div class="graph-report" id="container3">
-	 			<?php include "pages_informes/chart_03.php"; ?>		
-	 		</div>
-	 	</div>
-	 	<div class="col-md-6">
-	 		<h5>Titulo 4<a href="#chart_04_full"><span class="glyphicon glyphicon-resize-full pull-right" style="color: black;" onclick="$('#cuerpo').load('pages_informes/chart_04_full.php');"></span></a></h5>
-	 		<div class="graph-report" id="container4">
-	 			<?php include "pages_informes/chart_04.php"; ?>			
-	 		</div>
-	 	</div>
-	 </div>	
 	 <br> 	
 </div><!-- col-md-11 -->

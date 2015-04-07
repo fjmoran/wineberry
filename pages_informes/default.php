@@ -1,3 +1,24 @@
+<?php
+
+//include "auth.php";
+include_once "../recursos/zhi/CreaConnv2.php";
+
+$sql = "select infoData, timeData from Data where Device_idDevice='1' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>
+
+
 <div class="col-md-11">
  	<h2>Panel de temperaturas actuales</h2>
  	</br>
@@ -7,8 +28,14 @@
  		</div>
 	 	<div class="col-md-4">
 	 		<h5 class="text-center">Sensor 001 - Galpón norte</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">24ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">
+	 			<?php 
+	 			echo "$data[infoData]";
+	 			?>ºC</button>
+	 		<h6>Fecha última medición:
+	 			<?php
+	 			echo $data[timeData];
+	 			?></h6>
 	 	</div>
 	 	<div class="col-md-4">
 	 		<h5 class="text-center">Sensor 002 - Galpón sur</h5>

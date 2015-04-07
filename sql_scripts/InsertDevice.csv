@@ -1,0 +1,4 @@
+idDevice,nombreDevice,codigoDevice,posicionDevice,descripcionDevice
+1,DHT11,Temp_01,01,"Sensor DHT11 con DS18B20"
+2,DS18B20,02,02,"Sensor DS18B20 con DHT11"
+3,DHT11,Hum_01,01,NULL

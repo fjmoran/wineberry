@@ -3,7 +3,7 @@
 //include "auth.php";
 include_once "../recursos/zhi/CreaConnv2.php";
 
-$sql = "select infoData, timeData from Data where Device_idDevice='1' order by timeData desc limit 1";
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='1' order by timeData desc limit 1";
 
 if($result = $mysqli->query($sql))
 {

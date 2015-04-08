@@ -4,7 +4,7 @@
 */
 include_once "../recursos/zhi/CreaConnv2.php";
 
-$sql = "select infoData, timeData from Data where Device_idDevice='1' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='1' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
 $i = 0;
 
 //echo "$sql <br>";

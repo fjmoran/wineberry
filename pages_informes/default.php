@@ -30,7 +30,7 @@ if($result = $mysqli->query($sql))
 	 		<h5 class="text-center">Sensor 001 - Galpón norte</h5>
 	 		<button type="button" class="btn btn-info btn-lg btn-block">
 	 			<?php 
-	 			echo "$data[infoData]";
+	 			echo $data[infoData];
 	 			?>ºC</button>
 	 		<h6>Fecha última medición:
 	 			<?php

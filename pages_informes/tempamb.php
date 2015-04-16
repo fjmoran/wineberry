@@ -55,7 +55,7 @@ $(function () {
             zoomType: 'x'
         },
         title: {
-            text: 'Temperatura en Zona #1'
+            text: 'Temperatura Ambiental'
         },
         subtitle: {
             text: document.ontouchstart === undefined ?
@@ -106,7 +106,7 @@ $fecha_inicio = preg_split("/-/",$inicio_date_serie1[0]);
 $hora_inicio = preg_split("/:/",$inicio_date_serie1[1]);
 //print_r($fecha_inicio);
 ?>            
-            pointStart: Date.UTC(
+            pointStart: Date(
 <?php 
 echo intval($fecha_inicio[0]) . ",";
 echo intval($fecha_inicio[1])-1 . ",";
@@ -127,7 +127,7 @@ while ($j<=$contador_serie1)
           ]}
         ,{
         	type :'line', name:'Sensor 2 - Temperatura en Cº', pointInterval : 1*300*1000,
-        	pointStart : Date.UTC(
+        	pointStart : Date(
 <?php
 $fecha_inicio = preg_split("/-/",$inicio_date_serie2[0]);
 $hora_inicio = preg_split("/:/",$inicio_date_serie2[1]); 

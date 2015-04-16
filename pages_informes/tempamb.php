@@ -122,7 +122,7 @@ echo intval($hora_inicio[2]);
 $j=0;
 while ($j<=$contador_serie1)
 {
-	echo $data[$j++][infoData] . ",";
+	echo $data_serie1[$j++][infoData] . ",";
 }
 ?>
           ]}
@@ -144,7 +144,7 @@ echo intval($hora_inicio[2]);
 $j=0;
 while ($j<=$contador_serie2)
 {
-	echo $data[$j++][infoData] . ",";
+	echo $data_serie2[$j++][infoData] . ",";
 }
 ?>
 

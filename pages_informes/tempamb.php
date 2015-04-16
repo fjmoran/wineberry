@@ -5,7 +5,7 @@
 include_once "../recursos/zhi/CreaConnv2.php";
 
 $sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='1' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
-$i = 0;
+$contador_serie1 = 0;
 
 //echo "$sql <br>";
 
@@ -13,14 +13,27 @@ if ($result = $mysqli->query($sql))
 {
 	while ($row = $result->fetch_assoc()) 
 	{
-		$data[$i++]=$row;
+		$data_serie1[$contador_serie1++]=$row;
 	}
 	$result->free();
 }
 
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='2' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
+$contador_serie2 = 0;
+if ($result = $mysqli->query($sql))
+{
+	while ($row = $result->fetch_assoc()) 
+	{
+		$data_serie2[$contador_serie2++]=$row;
+	}
+	$result->free();
+}
+
+
 //print_r($data[0]);
 
-$inicio_date = preg_split("/[\s,]+/",$data[0][timeData]);
+$inicio_date_serie1 = preg_split("/[\s,]+/",$data_serie1[0][timeData]);
+$inicio_date_serie2 = preg_split("/[\s,]+/",$data_serie2[0][timeData]);
 //print_r($inicio_date);
 ?>
 
@@ -59,7 +72,7 @@ $(function () {
             }
         },
         legend: {
-            enabled: false
+            enabled: true
         },
         plotOptions: {
             area: {
@@ -84,14 +97,14 @@ $(function () {
         },
 
         series: [{
-            type: 'area',
-            name: 'Temperatura en Cº',
+            type: 'line',
+            name: 'Sensor 1 - Temperatura en Cº',
             pointInterval: 1 * 300 * 1000, //intervalos de 5 min (300000 milliseundos)
 <?php
 
 //print_r($inicio_date);
-$fecha_inicio = preg_split("/-/",$inicio_date[0]);
-$hora_inicio = preg_split("/:/",$inicio_date[1]);
+$fecha_inicio = preg_split("/-/",$inicio_date_serie1[0]);
+$hora_inicio = preg_split("/:/",$inicio_date_serie1[1]);
 //print_r($fecha_inicio);
 ?>            
             pointStart: Date.UTC(
@@ -107,13 +120,37 @@ echo intval($hora_inicio[2]);
             data: [
 <?php
 $j=0;
-while ($j<=$i)
+while ($j<=$contador_serie1)
 {
 	echo $data[$j++][infoData] . ",";
 }
 ?>
             ]
-        }]
+        },
+        {
+        	type :'line', name:'Sensor 2 - Temperatura en Cº', pointInterval : 1*300*1000,
+        	pointStart : Date.UTC(
+<?php
+$fecha_inicio = preg_split("/-/",$inicio_date_serie2[0]);
+$hora_inicio = preg_split("/:/",$inicio_date_serie2[1]); 
+echo intval($fecha_inicio[0]) . ",";
+echo intval($fecha_inicio[1])-1 . ",";
+echo intval($fecha_inicio[2]) . ",";
+echo intval($hora_inicio[0]) . ",";
+echo intval($hora_inicio[1]) . ",";
+echo intval($hora_inicio[2]);
+?>
+), data :[
+<?php
+$j=0;
+while ($j<=$contador_serie2)
+{
+	echo $data[$j++][infoData] . ",";
+}
+?>
+
+]
+        ]}
     });
 });
 		</script>

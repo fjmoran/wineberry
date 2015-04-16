@@ -37,10 +37,25 @@ if($result = $mysqli->query($sql))
 	 			echo $data[timeData];
 	 			?></h6>
 	 	</div>
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='2' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>	 	
 	 	<div class="col-md-4">
 	 		<h5 class="text-center">Sensor 002 - Galpón sur</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">25ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>
+	 		<button type="button" class="btn btn-info btn-lg btn-block"><?php echo $data[infoData]; ?>ºC</button>
+	 		<h6>Fecha última medición: <?php echo $data[timeData]; ?></h6>
 	 	</div>
 	 	<div class="col-md-4">
 	 		<h5 class="text-center">Sensor 003 - Exterior</h5>

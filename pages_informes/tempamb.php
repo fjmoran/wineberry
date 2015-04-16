@@ -125,9 +125,8 @@ while ($j<=$contador_serie1)
 	echo $data[$j++][infoData] . ",";
 }
 ?>
-            ]
-        },
-        {
+          ]}
+        {,
         	type :'line', name:'Sensor 2 - Temperatura en Cº', pointInterval : 1*300*1000,
         	pointStart : Date.UTC(
 <?php
@@ -150,7 +149,7 @@ while ($j<=$contador_serie2)
 ?>
 
 ]
-        ]}
+        }]
     });
 });
 		</script>

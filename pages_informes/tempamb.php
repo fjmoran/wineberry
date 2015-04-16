@@ -97,8 +97,7 @@ $(function () {
         },
 
         series: [{
-            type: 'line',
-            name: 'Sensor 1 - Temperatura en Cº',
+            type: 'line',name: 'Sensor 1 - Temperatura en Cº',
             pointInterval: 1 * 300 * 1000, //intervalos de 5 min (300000 milliseundos)
 <?php
 
@@ -126,7 +125,7 @@ while ($j<=$contador_serie1)
 }
 ?>
           ]}
-        {,
+        ,{
         	type :'line', name:'Sensor 2 - Temperatura en Cº', pointInterval : 1*300*1000,
         	pointStart : Date.UTC(
 <?php
@@ -148,8 +147,8 @@ while ($j<=$contador_serie2)
 }
 ?>
 
-]
-        }]
+]}
+        ]
     });
 });
 		</script>

@@ -198,14 +198,23 @@ int main( void )
 			pos_moda = Calculo_Moda(temp_array,cont-1);
 			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'1',FROM_UNIXTIME(%d))",temp_array[pos_moda],time_end);
 			//printf ("%s\n",ins);
-			
+			if(mysql1 != NULL)
+	    {
+	        //Inserta los datos de Temperatura
+	        if (mysql_query(mysql1, ins))
+	        {
+	            fprintf(fp, "%s\n", mysql_error(mysql1));
+	            fflush(fp);
+	            //return;
+	        }
+	    }			
 			fprintf(fp,"Insertado en la Base de Datos : %d;1;%d\n",temp_array[pos_moda],time_end);
 			fflush(fp);
 			
 			mysql_connect();
 			if(mysql1 != NULL)
 	    {
-	        //Retrieve all data from alarm_times
+	        //Inserta los datos de Humedad
 	        if (mysql_query(mysql1, ins))
 	        {
 	            fprintf(fp, "%s\n", mysql_error(mysql1));

@@ -21,15 +21,21 @@
 #define DATABASE_USERNAME	"root"
 #define DATABASE_PASSWORD	"zhi$root$mysql"
 
+struct dht11{
+	int temp;
+	int hum;
+	int CRC;
+};
 
 int contador,dht11_dat[5] = { 0, 0, 0, 0, 0 };
 MYSQL *mysql1;
 
-int read_dht11_dat()
+struct dht11 read_dht11_dat()
 {
 	uint8_t laststate	= HIGH;
 	uint8_t counter		= 0;
 	uint8_t j		= 0, i;
+	struct dht11 result;
 	//float	f; /* fahrenheit */
 	
 	dht11_dat[0] = dht11_dat[1] = dht11_dat[2] = dht11_dat[3] = dht11_dat[4] = 0;
@@ -85,17 +91,22 @@ int read_dht11_dat()
 		//fprintf (fp,"%d;",(int)time(NULL));
 		//printf( "Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n", dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f );
 		//fprintf( fp,"%d.%d;%d.%d;%.1f\n", dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f );
+		result.temp = dht11_dat[2];
+		result.hum = dht11_dat[0];
+		result.CRC = dht11_dat[4];
 
 	}else  {
 	//	printf( "Data not good, skip\n" );
 
 	//	f = dht11_dat[2] * 9. / 5. + 32;
 	//	printf( "Humidity = %d.%d %% Temperature = %d.%d *C (%.1f *F)\n", dht11_dat[0], dht11_dat[1], dht11_dat[2], dht11_dat[3], f );
-	dht11_dat[2] = -1;
+	result.temp = -1;
+	result.hum = dht11_dat[0];
+	result.CRC = dht11_dat[4];
 	}
 //fclose(fp);
 //sprintf(salida,"%d.%d;%d.%d",dht11_dat[0],dht11_dat[1],dht11_dat[2],dht11_dat[3]);
-return dht11_dat[2];
+return result;
 }
 
 //*****************************************
@@ -156,13 +167,15 @@ int Calculo_Moda(int nums[],int total) {
 
 int main( void )
 {
-	int temp = -1;
+	//int temp = -1;
 	int time_start, time_end,pos_moda;
 	char ins[100];
 	int temp_array [400];
+	int hum_array [400];
 	int cont = 0;
 	int tiempo_muestra = 5; //tiempo durante se toman los datos para enviar a la BD
 	FILE *fp;
+	struct dht11 datos;
 
 	fp = fopen("/var/log/dht11.log","a");
 
@@ -182,15 +195,16 @@ int main( void )
 		cont = 0;
 		while (time_start <= time_end)
 		{
-			temp = read_dht11_dat();
+			datos = read_dht11_dat();
 			//printf("temp = %d\n",temp);
-			if (temp >= 0) 
+			if (datos.temp >= 0) 
 			{
-				temp_array[cont++] = temp;
+				hum_array[cont] = datos.hum;
+				temp_array[cont++] = datos.temp;
 			}
 			delay(1000);
 			time_start = (int)time(NULL);
-			fprintf(fp,"contador = %d; time_start = %d; temp = %d\n",cont,time_start,temp);
+			fprintf(fp,"time_start = %d; temp = %d; humedad = %d\n",time_start,datos.temp,datos.hum);
 			fflush(fp);
 		}
 		if (cont > 0)
@@ -208,10 +222,12 @@ int main( void )
 	            //return;
 	        }
 	    }			
-			fprintf(fp,"Insertado en la Base de Datos : %d;1;%d\n",temp_array[pos_moda],time_end);
+			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
 			fflush(fp);
-			
-			mysql_connect();
+
+			pos_moda = Calculo_Moda(hum_array,cont-1);
+			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'3',FROM_UNIXTIME(%d))",hum_array[pos_moda],time_end);
+			//printf ("%s\n",ins);
 			if(mysql1 != NULL)
 	    {
 	        //Inserta los datos de Humedad
@@ -221,7 +237,9 @@ int main( void )
 	            fflush(fp);
 	            //return;
 	        }
-	    }
+	    }			
+			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
+			fflush(fp);			
 	    mysql_disconnect();
 		}else {
 			fprintf(fp,"No hay datos\n");

@@ -122,6 +122,7 @@ void mysql_connect (void)
     if(mysql1 == NULL)
     {
         fprintf(stderr, "%s\n", mysql_error(mysql1));
+        mysql_close(mysql1);
         return;
     }
 
@@ -129,6 +130,7 @@ void mysql_connect (void)
     if(mysql_real_connect(mysql1, SERVER, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME, 0, NULL, 0) == NULL)
     {
     	fprintf(stderr, "%s\n", mysql_error(mysql1));
+    	mysql_close(mysql1);
     }
     else
     {
@@ -201,43 +203,40 @@ int main( void )
 			{
 				hum_array[cont] = datos.hum;
 				temp_array[cont++] = datos.temp;
+				fprintf(fp,"time_start = %d; temp = %d; humedad = %d\n",time_start,datos.temp,datos.hum);
+				fflush(fp);
 			}
 			delay(1000);
 			time_start = (int)time(NULL);
-			fprintf(fp,"time_start = %d; temp = %d; humedad = %d\n",time_start,datos.temp,datos.hum);
-			fflush(fp);
+
 		}
+		
 		if (cont > 0)
 		{
+			mysql_connect();
 			pos_moda = Calculo_Moda(temp_array,cont-1);
 			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'1',FROM_UNIXTIME(%d))",temp_array[pos_moda],time_end);
 			//printf ("%s\n",ins);
-			if(mysql1 != NULL)
+	    //Inserta los datos de Temperatura
+	    if (mysql_query(mysql1, ins))
 	    {
-	        //Inserta los datos de Temperatura
-	        if (mysql_query(mysql1, ins))
-	        {
-	            fprintf(fp, "%s\n", mysql_error(mysql1));
-	            fflush(fp);
-	            //return;
-	        }
-	    }			
+	    	fprintf(fp, "%s\n", mysql_error(mysql1));
+	      fflush(fp);
+	      //return;
+	    }
 			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
 			fflush(fp);
-
+			
 			pos_moda = Calculo_Moda(hum_array,cont-1);
 			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'3',FROM_UNIXTIME(%d))",hum_array[pos_moda],time_end);
 			//printf ("%s\n",ins);
-			if(mysql1 != NULL)
-	    {
-	        //Inserta los datos de Humedad
-	        if (mysql_query(mysql1, ins))
-	        {
-	            fprintf(fp, "%s\n", mysql_error(mysql1));
-	            fflush(fp);
-	            //return;
-	        }
-	    }			
+      //Inserta los datos de Humedad
+      if (mysql_query(mysql1, ins))
+      {
+	      fprintf(fp, "%s\n", mysql_error(mysql1));
+	      fflush(fp);
+	      //return;
+	    }
 			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
 			fflush(fp);			
 	    mysql_disconnect();

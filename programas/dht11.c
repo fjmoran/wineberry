@@ -114,14 +114,14 @@ return result;
 //********** CONNECT TO DATABASE **********
 //*****************************************
 //*****************************************
-void mysql_connect (void)
+void mysql_connect (FILE *fp)
 {
     //initialize MYSQL object for connections
 	mysql1 = mysql_init(NULL);
 
     if(mysql1 == NULL)
     {
-        fprintf(stderr, "%s\n", mysql_error(mysql1));
+        fprintf(fp, "%s\n", mysql_error(mysql1));
         mysql_close(mysql1);
         return;
     }
@@ -129,7 +129,7 @@ void mysql_connect (void)
     //Connect to the database
     if(mysql_real_connect(mysql1, SERVER, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME, 0, NULL, 0) == NULL)
     {
-    	fprintf(stderr, "%s\n", mysql_error(mysql1));
+    	fprintf(fp, "%s\n", mysql_error(mysql1));
     	mysql_close(mysql1);
     }
     else
@@ -150,27 +150,30 @@ void mysql_disconnect (void)
 }
 
 
-int Calculo_Moda(int nums[],int total) {
-    int i, j, maxCount, modeValue;
-    int tally[total];
-    for (i = 0; i < total; i++) {
-         tally[nums[i]]++;
-    }
-    maxCount = 0;
-    modeValue = 0;
-    for (j = 0; j < total; j++) {
-        if (tally[j] > maxCount) {
-            maxCount = tally[j];
-            modeValue = j;
-        }
-    }
-    return modeValue;
+int Calculo_Moda(int nums[],int total) { //Ojo asume que el arreglo esta ordenado
+    int j, i, c, max, mode;
+    
+    mode  = 0;
+    max = 0;
+    
+for (j=0;j<total;j++){
+	c = 0;
+	for ( i = j+1; i < total; ++i ) {
+		if (nums[j] == nums[i]) {
+			c++;
+		}
+		if ((c>max) && (c!=0)) {
+			max = c;
+			mode = nums[i];
+		}
+	}
+}
+return mode;
 }
 
-int main( void )
+int main(int argc, char* argv[] )
 {
-	//int temp = -1;
-	int time_start, time_end,pos_moda;
+	int time_start, time_end,moda;
 	char ins[100];
 	int temp_array [400];
 	int hum_array [400];
@@ -188,7 +191,7 @@ int main( void )
 
 	while ( 1 )
 	{
-		//printf (" %d :",contador++);
+		printf (" %d :",contador++);
 		time_start = (int)time(NULL);
 		time_end = time_start + 60*tiempo_muestra;
 		fprintf(fp,"time start = %d; time end = %d\n",time_start,time_end);
@@ -198,7 +201,6 @@ int main( void )
 		while (time_start <= time_end)
 		{
 			datos = read_dht11_dat();
-			//printf("temp = %d\n",temp);
 			if (datos.temp >= 0) 
 			{
 				hum_array[cont] = datos.hum;
@@ -206,36 +208,31 @@ int main( void )
 				fprintf(fp,"time_start = %d; temp = %d; humedad = %d\n",time_start,datos.temp,datos.hum);
 				fflush(fp);
 			}
-			delay(1000);
+			delay(3000);
 			time_start = (int)time(NULL);
-
 		}
 		
 		if (cont > 0)
 		{
 			mysql_connect();
-			pos_moda = Calculo_Moda(temp_array,cont-1);
-			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'1',FROM_UNIXTIME(%d))",temp_array[pos_moda],time_end);
-			//printf ("%s\n",ins);
+			moda = Calculo_Moda(temp_array,cont-1);
+			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'1',FROM_UNIXTIME(%d))",moda,time_end);
 	    //Inserta los datos de Temperatura
 	    if (mysql_query(mysql1, ins))
 	    {
 	    	fprintf(fp, "%s\n", mysql_error(mysql1));
 	      fflush(fp);
-	      //return;
 	    }
 			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
 			fflush(fp);
 			
-			pos_moda = Calculo_Moda(hum_array,cont-1);
-			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'3',FROM_UNIXTIME(%d))",hum_array[pos_moda],time_end);
-			//printf ("%s\n",ins);
+			moda = Calculo_Moda(hum_array,cont-1);
+			sprintf (ins,"insert into Data(infoData,Device_idDevice,timeData) VALUES (%d,'3',FROM_UNIXTIME(%d))",moda,time_end);
       //Inserta los datos de Humedad
       if (mysql_query(mysql1, ins))
       {
 	      fprintf(fp, "%s\n", mysql_error(mysql1));
 	      fflush(fp);
-	      //return;
 	    }
 			fprintf(fp,"Insertado en la Base de Datos : %s\n",ins);
 			fflush(fp);			
@@ -243,8 +240,6 @@ int main( void )
 		}else {
 			fprintf(fp,"No hay datos\n");
 			fflush(fp);
-		//printf("retorno funcion read_dht11 : %d\n",read_dht11_dat());
-		//delay( 1000 ); /* wait 1sec to refresh */
 		}
 	}
 

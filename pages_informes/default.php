@@ -27,7 +27,7 @@ if($result = $mysqli->query($sql))
  			<h4>Temperatura ambiental</h4>
  		</div>
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 001 - Galpón norte</h5>
+	 		<h5 class="text-center">Tº ambiental sobre cuba 1</h5>
 	 		<button type="button" class="btn btn-info btn-lg btn-block">
 	 			<?php 
 	 			echo $data[infoData];
@@ -38,7 +38,7 @@ if($result = $mysqli->query($sql))
 	 			?></h6>
 	 	</div>
 <?php
-$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='2' order by timeData desc limit 1";
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='4' order by timeData desc limit 1";
 
 if($result = $mysqli->query($sql))
 {
@@ -53,14 +53,42 @@ if($result = $mysqli->query($sql))
 
 ?>	 	
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 002 - Galpón sur</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block"><?php echo $data[infoData]; ?>ºC</button>
-	 		<h6>Fecha última medición: <?php echo $data[timeData]; ?></h6>
+	 		<h5 class="text-center">Tº ambiental sobre cuba 2 (a)</h5>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>ºC</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>
 	 	</div>
+
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='6' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>	 	
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 003 - Exterior</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">29ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 		<h5 class="text-center">Tº ambiental sobre cuba 2 (b)</h5>
+	 		<button type="button" class="btn btn-info btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>ºC</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>	 		
 	 	</div>	 	
 	</div>
 	
@@ -68,21 +96,131 @@ if($result = $mysqli->query($sql))
  		<div class="col-md-12">
  			<h4>Temperatura cubas</h4>
  		</div>
+
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='2' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>		
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 003 - Cuba 1 - 15.000 lts</h5>
-	 		<button type="button" class="btn btn-success btn-lg btn-block">12ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+	 		<h5 class="text-center">Cuba 1 - 40.000 lts</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>ºC</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>	 		
 	 	</div>
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 004 - Cuba 2 - 30.000 lts</h5>
-	 		<button type="button" class="btn btn-success btn-lg btn-block">10ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+ 		 
 	 	</div>
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Sensor 005 - Cuba 3 - 20.000 lts</h5>
-	 		<button type="button" class="btn btn-success btn-lg btn-block">11ºC</button>
-	 		<h6>Fecha última medición: 25-03-2015 - 15:03:45</h6>	 		
+ 		
 	 	</div>	 	
 	 </div>
+
+ 	<div class="row bs-sidenav">
+ 		<div class="col-md-12">
+ 			<h4>Humedad</h4>
+ 		</div>
+
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='3' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>		
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Humedad 1</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>%</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>	 		
+	 	</div>
+
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='5' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>	
+
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Humedad 2</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>%</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>	 		
+	 	</div>
+
+<?php
+$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='7' order by timeData desc limit 1";
+
+if($result = $mysqli->query($sql))
+{
+	if ($debug)
+	{
+		echo "despues de query";
+		echo "</br>";
+	}
+	$data = $result->fetch_array(MYSQLI_ASSOC);
+	$result->free();
+}
+
+?>	
+
+	 	<div class="col-md-4">
+	 		<h5 class="text-center">Humedad 3</h5>
+	 		<button type="button" class="btn btn-success btn-lg btn-block">
+	 			<?php 
+	 			echo $data[infoData]; 
+	 			?>%</button>
+	 		<h6>Fecha última medición: 
+	 			<?php 
+	 			echo $data[timeData]; 
+	 			?></h6>	 		
+	 	</div> 	
+	 </div>
+
+
+
 	 <br> 	
 </div><!-- col-md-11 -->

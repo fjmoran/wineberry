@@ -121,7 +121,17 @@ if($result = $mysqli->query($sql))
 	 		<h6>Fecha última medición: 
 	 			<?php 
 	 			echo $data[timeData]; 
-	 			?></h6>	 		
+	 			?></h6>	
+	 			</br>
+			<h4>Control de refrigerante</h4>
+			<div class="text-center">	
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Encendido
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked> Apagado
+			</label>
+			</div>
 	 	</div>
 	 	<div class="col-md-4">
  		 

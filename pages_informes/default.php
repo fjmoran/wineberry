@@ -124,7 +124,7 @@ if($result = $mysqli->query($sql))
 	 			?></h6>	
 	 			</br>	
 			    <label>
-			      <input type="checkbox" name="rf-switch"> Refrigeración
+			      <input type="checkbox" name="rf-switch-1"> &nbsp Válvula de refrigeración
 			    </label>
 	 	</div>
 	 	<div class="col-md-4">

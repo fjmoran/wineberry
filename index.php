@@ -88,8 +88,8 @@ require "recursos/zhi/auth.php";
                       yearSuffix: ''};
               $.datepicker.setDefaults($.datepicker.regional['es']);
       }); 
-      // bootstrap switch      
-    $("[name='rf-switch']").bootstrapSwitch();
+          // bootstrap switch      
+    $("[name='rf-switch-1']").bootstrapSwitch($.fn.bootstrapSwitch.defaults.size = 'mini', $.fn.bootstrapSwitch.defaults.onColor = 'success');
     })
   </script>
 

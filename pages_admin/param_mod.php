@@ -53,7 +53,7 @@ $_GET['table'] = $db.".Parametro";
 
 		<a onclick="$('#cuerpo').load('pages_admin/param_crear.php');" href="#param_crear" role="button" class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
-	<h4>Páginas disponibles</h4>
+	<h4>Parámetros disponibles</h4>
 
 	<?php 
 	$_GET['select'] = "nombreParametro, valorParametro as Valor, activoParametro as Estado";

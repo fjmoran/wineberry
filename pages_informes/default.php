@@ -223,8 +223,6 @@ if($result = $mysqli->query($sql))
 	 			?></h6>	 		
 	 	</div> 	
 	 </div>
-
-
-
 	 <br> 	
 </div><!-- col-md-11 -->
+

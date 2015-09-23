@@ -54,7 +54,6 @@ require "recursos/zhi/auth.php";
   <script src="recursos/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="recursos/highcharts/js/highcharts.js"></script>
   <script src="recursos/highcharts/js/modules/exporting.js"></script>
-  <script src="recursos/bootstrap-switch/js/bootstrap-switch.min.js"></script>
   
   <script type="text/javascript"> 
     
@@ -87,9 +86,7 @@ require "recursos/zhi/auth.php";
                       showMonthAfterYear: false,
                       yearSuffix: ''};
               $.datepicker.setDefaults($.datepicker.regional['es']);
-      }); 
-          // bootstrap switch      
-    $("[name='rf-switch-1']").bootstrapSwitch($.fn.bootstrapSwitch.defaults.size = 'mini', $.fn.bootstrapSwitch.defaults.onColor = 'success');
+      });     
     })
   </script>
 

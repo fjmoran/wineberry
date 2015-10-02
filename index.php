@@ -19,8 +19,8 @@ require "recursos/zhi/auth.php";
     <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
     <!-- Fav Icon -->    
     <link href="img/favicon.ico" rel="SHORTCUT ICON">
-    <!-- Fav Icon --> 
-    <link href="recursos/bootstrap-switch/css/bootstrap-switch.css" rel="stylesheet">
+    <!-- Fav Toggles --> 
+    <script src="recursos/jquery-toggles/css/toggles-full.css" type="text/javascript"></script>
     <!-- jquery -->  
     <script src="recursos/jquery/jquery-1.10.2.min.js"></script> 
 
@@ -54,6 +54,7 @@ require "recursos/zhi/auth.php";
   <script src="recursos/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="recursos/highcharts/js/highcharts.js"></script>
   <script src="recursos/highcharts/js/modules/exporting.js"></script>
+  <script src="recursos/jquery-toggles/toggles.min.js"</script>
   
   <script type="text/javascript"> 
     

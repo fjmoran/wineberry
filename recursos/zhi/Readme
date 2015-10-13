@@ -2,3 +2,16 @@ Directorio zhi
 ==============
 
 Recurso creados por nosotros para el sistema.
+
+Archivo de configuración (config.ini)
+-------------------------------------
+
+tenemos las opciones de :
+
+basedir = directorio base donde se encuentra las paginas
+schema = BD donde se guardan los datos de sistema
+data = BD donde se guardan los datos de la aplicacion
+user = usuario de conexión de la base de datos
+password = clave de conexión de la base de datos
+host = server de BD
+port = puerto de conexión a la BD

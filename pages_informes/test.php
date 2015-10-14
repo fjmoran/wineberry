@@ -9,9 +9,10 @@ include_once "../recursos/zhi/CreaConnv2.php";
     <div class="toggle toggle-light">
     </div>
     <label>
-      <input onchange="" type="checkbox" name="rf-switch-2"> &nbsp Ampolleta prendida
+      <input onchange="this.setAttribute('disabled', 'true');$('#salida').load('recursos/zhi/test_insert.php')" type="checkbox" name="rf-switch-2"> &nbsp Ampolleta prendida
     </label>
-
+<div id="salida">
+</div>
 </div><!-- col-md-11 -->
 
  <script type="text/javascript">

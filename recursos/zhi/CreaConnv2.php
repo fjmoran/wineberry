@@ -18,7 +18,7 @@ if ($mysqli->connect_errno) {
     echo "Fallo al contenctar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
-$data_mysqli == new mysqli($host, $user, $passwd, $data_db);
+$data_mysqli = new mysqli($host, $user, $passwd, $data_db);
 if ($data_mysqli->connect_errno) {
     echo "Fallo al contenctar a MySQL: (" . $data_mysqli->connect_errno . ") " . $data_mysqli->connect_error;
 }

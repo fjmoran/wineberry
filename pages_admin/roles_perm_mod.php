@@ -38,50 +38,30 @@ require_once("../recursos/zhi/funciones.php");
 		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
 		      <div class="panel-body">
 	
-<div class="row">
-			      	<div class="col-md-6">
-			      		<h4>Nombre item</h4>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<h4>Normal</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Bloquedo</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Oculto</h4>
-			      	</div>	
-			    </div> 	
-			    <div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 1</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item1" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item1" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item1" value="2">
-			      	</div>	
-		      	</div>
-		      	<div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 2</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item2" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item2" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p1_item2" value="2">
-			      	</div>	
-		      	</div>
-
-
+				<table class="table table-striped table-condensed">
+				  <thead style="text-align: center; color:#428BCA;">
+				    <tr>
+				      <th width=60%>Nombre Item</th>
+				      <th width=13%>Normal</th>
+				      <th width=13%>Bloqueado</th>
+				      <th width=14%>Oculto</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Item nombre 1</td>     	
+				      <td><input type="radio" name="p1_item1" value="0"></td>
+				      <td><input type="radio" name="p1_item1" value="1"></td>
+				      <td><input type="radio" name="p1_item1" value="2"></td>
+				    </tr>
+				    <tr>
+				      <td>Item nombre 2</td>     	
+				      <td><input type="radio" name="p1_item2" value="0"></td>
+				      <td><input type="radio" name="p1_item2" value="1"></td>
+				      <td><input type="radio" name="p1_item2" value="2"></td>
+				    </tr>
+				  </tbody>
+				</table>
 
 		      </div>
 		    </div>
@@ -97,49 +77,31 @@ require_once("../recursos/zhi/funciones.php");
 		    </div>
 		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 		      <div class="panel-body">
-		      	<div class="row">
-			      	<div class="col-md-6">
-			      		<h4>Nombre item</h4>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<h4>Normal</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Bloquedo</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Oculto</h4>
-			      	</div>	
-			    </div> 	
-			    <div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 1</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item1" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item1" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item1" value="2">
-			      	</div>	
-		      	</div>
-		      	<div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 2</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item2" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item2" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p2_item2" value="2">
-			      	</div>	
-		      	</div>
 
+				<table class="table table-striped table-condensed">
+				  <thead style="text-align: center; color:#428BCA;">
+				    <tr>
+				      <th width=60%>Nombre Item</th>
+				      <th width=13%>Normal</th>
+				      <th width=13%>Bloqueado</th>
+				      <th width=14%>Oculto</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Item nombre 1</td>     	
+				      <td><input type="radio" name="p2_item1" value="0"></td>
+				      <td><input type="radio" name="p2_item1" value="1"></td>
+				      <td><input type="radio" name="p2_item1" value="2"></td>
+				    </tr>
+				    <tr>
+				      <td>Item nombre 2</td>     	
+				      <td><input type="radio" name="p2_item2" value="0"></td>
+				      <td><input type="radio" name="p2_item2" value="1"></td>
+				      <td><input type="radio" name="p2_item2" value="2"></td>
+				    </tr>
+				  </tbody>
+				</table>
 
 		      </div>
 		    </div>
@@ -156,66 +118,35 @@ require_once("../recursos/zhi/funciones.php");
 		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 		      <div class="panel-body">
 
-
-		      	<div class="row">
-			      	<div class="col-md-6">
-			      		<h4>Nombre item</h4>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<h4>Normal</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Bloquedo</h4>
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<h4>Oculto</h4>
-			      	</div>	
-			    </div> 	
-			    <div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 1</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item1" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item1" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item1" value="2">
-			      	</div>	
-		      	</div>
-		      	<div class="row">
-			      	<div class="col-md-6">
-			      		<h5>Item nombre 2</h5>
-			      	</div>
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item2" value="0">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item2" value="1">
-			      	</div>	
-			      	<div class="col-md-2">
-			      		<input type="radio" name="p3_item2" value="2">
-			      	</div>	
-		      	</div>
-
+				<table class="table table-striped table-condensed">
+				  <thead style="text-align: center; color:#428BCA;">
+				    <tr>
+				      <th width=60%>Nombre Item</th>
+				      <th width=13%>Normal</th>
+				      <th width=13%>Bloqueado</th>
+				      <th width=14%>Oculto</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>Item nombre 1</td>     	
+				      <td><input type="radio" name="p3_item1" value="0"></td>
+				      <td><input type="radio" name="p3_item1" value="1"></td>
+				      <td><input type="radio" name="p3_item1" value="2"></td>
+				    </tr>
+				    <tr>
+				      <td>Item nombre 2</td>     	
+				      <td><input type="radio" name="p3_item2" value="0"></td>
+				      <td><input type="radio" name="p3_item2" value="1"></td>
+				      <td><input type="radio" name="p3_item2" value="2"></td>
+				    </tr>
+				  </tbody>
+				</table>
 
 		      </div>
 		    </div>
 		  </div>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
 
 		<div class="row">
 			<div class="row pull-right"> <!-- fila para botones -->

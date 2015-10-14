@@ -22,69 +22,199 @@ require_once("../recursos/zhi/funciones.php");
 	 		</div>
 	 	</div>
 
-	 	<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-		  <li class="active"><a href="#index" role="tab" data-toggle="tab">Inicio</a></li>
-		  <li><a href="#informes" role="tab" data-toggle="tab">Informes</a></li>
-		  <li><a href="#admin" role="tab" data-toggle="tab">Administración</a></li>
-		  <li><a href="#login" role="tab" data-toggle="tab">Salir</a></li>
-		</ul>
 
-		<!-- Tab panes -->
-		<div class="tab-content">
-		  <div class="tab-pane active" id="index">
 
-		  	<div class="row">
-		  		<div class="col-md-12">
-		  		  <br>
-			  	  <div class="checkbox">
-				    <label>
-				      <input type="checkbox"> <h4>Habilitar menú Inicio</h4>
-				    </label>
-				  </div> <br>
-				</div>  
-			</div>  
 
-		 	<div class="row">		
-		 		<div class="col-md-4">
-		 			<h5>Permisos disponibles</h5>
-		 			<ul id="sortable1" class="droptrue">
-		 				<?php
-		 					echo listado("ui-state-default","Pagina","nombrePagina","idPagina",$mysqli);
-		 				?>
-					</ul>
-				</div>
-				<div class="col-md-2" style="padding-top: 190px;">
-					<a href="#" class="btn btn-success btn-sm btn-block" role="button"> Agregar todos >> </a>
-					<a href="#" class="btn btn-danger btn-sm btn-block" role="button"> << Quitar todos</a>
-				</div>	
-		 		<div class="col-md-4">
-		 			<h5>Permisos para el Rol</h5>		
-					<ul id="sortable2" class="droptrue">
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingOne">
+		      <h4 class="panel-title">
+		      	<input type="checkbox" name="vehicle" value="nombre_pagina1">
+		        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+		          Página Nº1
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		      <div class="panel-body">
+	
+<div class="row">
+			      	<div class="col-md-6">
+			      		<h4>Nombre item</h4>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<h4>Normal</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Bloquedo</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Oculto</h4>
+			      	</div>	
+			    </div> 	
+			    <div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 1</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item1" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item1" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item1" value="2">
+			      	</div>	
+		      	</div>
+		      	<div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 2</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item2" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item2" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p1_item2" value="2">
+			      	</div>	
+		      	</div>
 
-					</ul>
-		 		</div>
-		 		<div class="col-md-2">
-		 		</div>		
-		 	</div>
 
+
+		      </div>
+		    </div>
 		  </div>
-		  <div class="tab-pane" id="informes">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingTwo">
+		      <h4 class="panel-title">
+		      	<input type="checkbox" name="vehicle" value="nombre_pagina2">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+		         Página Nº2
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		      <div class="panel-body">
+		      	<div class="row">
+			      	<div class="col-md-6">
+			      		<h4>Nombre item</h4>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<h4>Normal</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Bloquedo</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Oculto</h4>
+			      	</div>	
+			    </div> 	
+			    <div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 1</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item1" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item1" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item1" value="2">
+			      	</div>	
+		      	</div>
+		      	<div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 2</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item2" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item2" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p2_item2" value="2">
+			      	</div>	
+		      	</div>
 
-		  	INFORMES
 
+		      </div>
+		    </div>
 		  </div>
-		  <div class="tab-pane" id="admin">
+		  <div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="headingThree">
+		      <h4 class="panel-title">
+		      	<input type="checkbox" name="vehicle" value="nombre_pagina3">
+		        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+		          Página Nº3
+		        </a>
+		      </h4>
+		    </div>
+		    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		      <div class="panel-body">
 
-		  	ADMIN
 
-		  </div>
-		  <div class="tab-pane" id="login">
+		      	<div class="row">
+			      	<div class="col-md-6">
+			      		<h4>Nombre item</h4>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<h4>Normal</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Bloquedo</h4>
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<h4>Oculto</h4>
+			      	</div>	
+			    </div> 	
+			    <div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 1</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item1" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item1" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item1" value="2">
+			      	</div>	
+		      	</div>
+		      	<div class="row">
+			      	<div class="col-md-6">
+			      		<h5>Item nombre 2</h5>
+			      	</div>
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item2" value="0">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item2" value="1">
+			      	</div>	
+			      	<div class="col-md-2">
+			      		<input type="radio" name="p3_item2" value="2">
+			      	</div>	
+		      	</div>
 
-		  	LOGIN
 
+		      </div>
+		    </div>
 		  </div>
 		</div>
+
+
+
+
+
+
+
+
+
+
 
 
 		<div class="row">

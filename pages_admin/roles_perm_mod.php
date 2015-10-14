@@ -5,7 +5,7 @@ require_once("../recursos/zhi/funciones.php");
 ?>
 <div class="col-md-11">
  	<h2>Permisos por Rol</h2>
- 	<h5>Seleccione el rol que desea configurar y arrastre los permisos de la columna izquierda a la derecha.</h5><br>
+ 	<h5>Seleccione el rol que desea configurar y eliga el permiso deseado para cada página e item de la página.</h5><br>
  	<form role="form">
 	 	<div class="row">
 	 		<div class="col-md-4">

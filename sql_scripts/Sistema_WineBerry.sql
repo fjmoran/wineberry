@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : zhi
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 50544
- Source Host           : www.zhi.cl
- Source Database       : Sistema_WineBerry
+ Source Server Version : 50542
+ Source Host           : localhost
+ Source Database       : sistema_wineberry
 
  Target Server Type    : MySQL
- Target Server Version : 50544
+ Target Server Version : 50542
  File Encoding         : utf-8
 
- Date: 09/26/2015 21:54:51 PM
+ Date: 10/15/2015 16:31:45 PM
 */
 
 SET NAMES utf8;

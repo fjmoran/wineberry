@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : zhi
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 50544
- Source Host           : www.zhi.cl
- Source Database       : Data_WineBerry
+ Source Server Version : 50542
+ Source Host           : localhost
+ Source Database       : data_wineberry
 
  Target Server Type    : MySQL
- Target Server Version : 50544
+ Target Server Version : 50542
  File Encoding         : utf-8
 
- Date: 09/26/2015 21:54:25 PM
+ Date: 10/15/2015 16:31:19 PM
 */
 
 SET NAMES utf8;
@@ -60,13 +60,13 @@ CREATE TABLE `Device` (
   `posicionDevice` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `descripcionDevice` text COLLATE utf8_spanish2_ci,
   PRIMARY KEY (`idDevice`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 --  Records of `Device`
 -- ----------------------------
 BEGIN;
-INSERT INTO `Device` VALUES ('1', 'DHT11', 'Temp_01', '01', 'Sensor DHT11 con DS18B20'), ('2', 'DS18B20', '02', '02', 'Sensor DS18B20 con DHT11'), ('3', 'DHT11', 'Hum_01', '01', null), ('4', 'DHT11', 'Temp_02', '03', 'Sensor DHT11 raspberry 2'), ('5', 'DHT11', 'Hum_02', '03', 'Sensor DHT11 Raspberry 2'), ('6', 'DHT11_2', 'Temp_03', '04', 'Sensor DHT11 Sobre Raspberry2'), ('7', 'DHT11_2', 'Hum_03', '04', 'Sensor DHT11 Sobre Raspberry2');
+INSERT INTO `Device` VALUES ('1', 'DHT11', 'Temp_01', '01', 'Sensor DHT11 con DS18B20'), ('2', 'DS18B20', '02', '02', 'Sensor DS18B20 con DHT11'), ('3', 'DHT11', 'Hum_01', '01', null), ('4', 'DHT11', 'Temp_02', '03', 'Sensor DHT11 raspberry 2'), ('5', 'DHT11', 'Hum_02', '03', 'Sensor DHT11 Raspberry 2'), ('6', 'DHT11_2', 'Temp_03', '04', 'Sensor DHT11 Sobre Raspberry2'), ('7', 'DHT11_2', 'Hum_03', '04', 'Sensor DHT11 Sobre Raspberry2'), ('8', 'switch01', 'switch01', null, 'switch de Prueba');
 COMMIT;
 
 -- ----------------------------
@@ -113,5 +113,48 @@ CREATE TABLE `Raw` (
   `dataRaw` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`idRaw`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+--  Table structure for `Switch`
+-- ----------------------------
+DROP TABLE IF EXISTS `Switch`;
+CREATE TABLE `Switch` (
+  `id_Switch` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Raspberry_idRaspberry` int(10) unsigned NOT NULL,
+  `nombreSwitch` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcionSwitch` text COLLATE utf8_spanish2_ci,
+  PRIMARY KEY (`id_Switch`),
+  KEY `idx_Device_idDevice` (`Raspberry_idRaspberry`),
+  CONSTRAINT `fk_Switch_Raspberry_1` FOREIGN KEY (`Raspberry_idRaspberry`) REFERENCES `Raspberry` (`idRaspberry`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- ----------------------------
+--  Records of `Switch`
+-- ----------------------------
+BEGIN;
+INSERT INTO `Switch` VALUES ('1', '1', 'Prueba', 'Switch de Prueba');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `Switching`
+-- ----------------------------
+DROP TABLE IF EXISTS `Switching`;
+CREATE TABLE `Switching` (
+  `idSwitching` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Switch_idSwitch` int(10) unsigned NOT NULL,
+  `estadoSwitching` tinyint(1) NOT NULL DEFAULT '0',
+  `fechahoracambioSwitching` datetime NOT NULL,
+  `syncSwitching` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`idSwitching`),
+  KEY `idx_Switch_idSwitch` (`Switch_idSwitch`),
+  CONSTRAINT `fk_Switching_Switch_1` FOREIGN KEY (`Switch_idSwitch`) REFERENCES `Switch` (`id_Switch`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- ----------------------------
+--  Records of `Switching`
+-- ----------------------------
+BEGIN;
+INSERT INTO `Switching` VALUES ('5', '1', '1', '2015-10-13 22:46:54', '0'), ('6', '1', '1', '2015-10-14 08:15:48', '0'), ('7', '1', '1', '2015-10-14 08:16:43', '0'), ('8', '1', '1', '2015-10-14 08:19:30', '0'), ('9', '1', '1', '2015-10-14 08:20:13', '0'), ('10', '1', '1', '2015-10-14 08:27:40', '0'), ('11', '1', '1', '2015-10-14 08:27:56', '0');
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

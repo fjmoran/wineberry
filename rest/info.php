@@ -1,11 +1,14 @@
 <?php
-$host = "localhost";
-$user = "root";
-$passwd = "root";
-$bd = "data_wineberry";
-$port = 8889;
+$ini_array = parse_ini_file("../recursos/zhi/config.ini");
 
-$mysqli = new mysqli($host, $user, $passwd, $bd, $port);
+$user = $ini_array['user'];
+$passwd = $ini_array['password'];
+$host = $ini_array['host'];
+$bd = $db = $ini_array['schema'];
+$data_db = $data_bd = $ini_array['data'];
+$port = $ini_array['port'];
+
+$mysqli = new mysqli($host, $user, $passwd, $data_db, $port);
 if ($mysqli->connect_errno) {
     echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }

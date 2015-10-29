@@ -1,8 +1,0 @@
-idDevice,nombreDevice,codigoDevice,posicionDevice,descripcionDevice
-1,DHT11,Temp_01,01,"Sensor DHT11 con DS18B20"
-2,DS18B20,02,02,"Sensor DS18B20 con DHT11"
-3,DHT11,Hum_01,01,NULL
-4,DHT11,Temp_02,03,"Sensor DHT11 raspberry 2"
-5,DHT11,Hum_02,03,"Sensor DHT11 Raspberry 2"
-6,DHT11_2,Temp_03,04,"Sensor DHT11 Sobre Raspberry2"
-7,DHT11_2,Hum_03,04,"Sensor DHT11 Sobre Raspberry2"

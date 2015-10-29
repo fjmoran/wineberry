@@ -1,11 +1,11 @@
 /*
--- Query: SELECT * FROM wineberry.Menu
+-- Query: SELECT * FROM Sistema_WineBerry.Menu
 LIMIT 0, 1000
 
--- Date: 2014-01-09 09:54
+-- Date: 2015-10-29 15:41
 */
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (1,'Inicio',0,1,1,'glyphicon glyphicon-home',1,NULL);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (2,'Informes',0,1,2,'glyphicon glyphicon-file',2,NULL);
+INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (2,'Informes',0,0,2,'glyphicon glyphicon-file',2,NULL);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (3,'AdministraciÃ³n',0,1,3,'glyphicon glyphicon-wrench',3,NULL);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (4,'Salir',0,1,4,'glyphicon glyphicon-off',4,NULL);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (5,'Mantenedores',1,1,1,'',NULL,3);
@@ -13,13 +13,7 @@ INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (7,'Roles',1,1,3,'glyphicon glyphicon-chevron-right',6,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (8,'Permisos por rol',1,1,4,'glyphicon glyphicon-chevron-right',7,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (9,'Tipos de contacto',1,1,5,'glyphicon glyphicon-chevron-right',8,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (10,'Materias',1,1,6,'glyphicon glyphicon-chevron-right',9,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (11,'Tipos de materia',1,1,7,'glyphicon glyphicon-chevron-right',10,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (12,'Tarifas por materia',1,1,8,'glyphicon glyphicon-chevron-right',11,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (13,'Estados de factura',1,1,9,'glyphicon glyphicon-chevron-right',12,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (14,'Tipos de moneda',1,1,10,'glyphicon glyphicon-chevron-right',13,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (15,'Tipos de abono',1,1,11,'glyphicon glyphicon-chevron-right',14,3);
-INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (16,'Tipo de gasto',1,1,12,'glyphicon glyphicon-chevron-right',15,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (17,'Feriados legales',1,1,13,'glyphicon glyphicon-chevron-right',16,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (18,'ParÃ¡metros',1,1,14,'',NULL,3);
 INSERT INTO `Menu` (`idMenu`,`nombreMenu`,`nivelMenu`,`activoMenu`,`posicionMenu`,`spanclassMenu`,`Pagina_idPagina`,`Menu_idMenu`) VALUES (19,'PaÃ­ses',1,1,15,'glyphicon glyphicon-chevron-right',17,3);

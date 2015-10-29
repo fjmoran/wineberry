@@ -16,13 +16,14 @@ if ($mysqli->connect_errno) {
 $idSwitch = isset($_GET['idSwitch'])? $mysqli->real_escape_string($_GET['idSwitch']):"";
 
 if (!empty($idSwitch)){
-  $query = $mysqli->query("select * from Switching where Switch_idSwitch = '$idSwitch' AND syncSwitching = 0");
+  $query = $mysqli->query("select * from Switching where Switch_idSwitch = '$idSwitch' AND (syncSwitching = 0 OR syncSwitching = 1)");
   $result = array();
   while ($r = $query->fetch_array()){
     extract($r);
     $result[]= array("idSwitching"=>$idSwitching,"Switch_idSwitch"=>$Switch_idSwitch,"estadoSwitching"=>$estadoSwitching,"fechahoracambioSwitching"=>$fechahoracambioSwitching,"syncSwitching"=>$syncSwitching);
   }
   $json = array("status"=>1,"info"=>$result);
+  $query = $mysqli->query("update Switching set syncSwitching=1 where Switch_idSwitch ='$idSwitch' AND syncSwitching = 0");
 }else{
   $json = array("status"=>0,"msg"=>"ID no presenta cambios IdSwitch = '$idSwitch'");
 }

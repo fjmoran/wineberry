@@ -2,7 +2,7 @@
 -- Query: SELECT * FROM Sistema_WineBerry.Pagina
 LIMIT 0, 1000
 
--- Date: 2015-10-29 15:42
+-- Date: 2015-10-30 17:36
 */
 INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (1,'index.php','index.php','Inicio (MenÃº Superior)',1);
 INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (2,'informes.php','informes.php','Informes (MenÃº Superior)',1);
@@ -52,3 +52,4 @@ INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,
 INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (64,'usr_mi_perfil.php','pages_admin/usr_mi_perfil.php','EdiciÃ³n de Perfil del usuario',1);
 INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (65,'usr_tar_mod.php','pages_admin/usr_tar_mod.php','EdiciÃ³n de Tarifa del usuario',1);
 INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (66,'#paginas_paginas_mod','pages_admin/paginas_paginas_mod.php','Relaciones entre pÃ¡ginas del sistema',1);
+INSERT INTO `Pagina` (`idPagina`,`urlPagina`,`nombrePagina`,`descripcionPagina`,`activoPagina`) VALUES (67,'#input_mod','pages_admin/input_mod.php','Lista de inputs de las paginas',1);

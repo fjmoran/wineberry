@@ -20,7 +20,7 @@ if (!empty($idSwitch)){
   $result = array();
   while ($r = $query->fetch_array()){
     extract($r);
-    $result[]= array("idSwitching"=>$idSwitching,"Switch_idSwitch"=>$Switch_idSwitch,"estadoSwitching"=>$estadoSwitching,"fechahoracambioSwitching"=>$fechahoracambioSwitching,"syncSwitching"=>$syncSwitching);
+    $result[]= array("idSwitching"=>intval($idSwitching),"Switch_idSwitch"=>intval($Switch_idSwitch),"estadoSwitching"=>boolval($estadoSwitching),"fechahoracambioSwitching"=>$fechahoracambioSwitching,"syncSwitching"=>intval($syncSwitching));
   }
   $json = array("status"=>1,"info"=>$result);
   $query = $mysqli->query("update Switching set syncSwitching=1 where Switch_idSwitch ='$idSwitch' AND syncSwitching = 0");

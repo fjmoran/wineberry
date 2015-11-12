@@ -19,7 +19,6 @@ require "recursos/zhi/auth.php";
     <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
     <!-- switchButton -->
     <link href="recursos/jQuery-switchButton/jquery.switchButton.css" rel="stylesheet">
-    <link href="recursos/jQuery-switchButton/main.css" rel="stylesheet">
     <!-- Fav Icon -->    
     <link href="img/favicon.ico" rel="SHORTCUT ICON">
     <!-- jquery -->  

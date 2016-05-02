@@ -1,16 +1,20 @@
 /**
- * Highcharts Drilldown plugin
+ * Highcharts Drilldown module
  * 
  * Author: Torstein Honsi
- * License: MIT License
+ * License: www.highcharts.com/license
  *
- * Demo: http://jsfiddle.net/highcharts/Vf3yT/
  */
 
-/*global Highcharts,HighchartsAdapter*/
-(function (H) {
+(function (factory) {
+	if (typeof module === 'object' && module.exports) {
+		module.exports = factory;
+	} else {
+		factory(Highcharts);
+	}
+}(function (H) {
 
-	"use strict";
+	'use strict';
 
 	var noop = function () {},
 		defaultOptions = H.getOptions(),
@@ -23,9 +27,9 @@
 		seriesTypes = H.seriesTypes,
 		PieSeries = seriesTypes.pie,
 		ColumnSeries = seriesTypes.column,
-		fireEvent = HighchartsAdapter.fireEvent,
-		inArray = HighchartsAdapter.inArray,
-		dupes = [],
+		Tick = H.Tick,
+		fireEvent = H.fireEvent,
+		inArray = H.inArray,
 		ddSeriesId = 1;
 
 	// Utilities
@@ -42,8 +46,7 @@
 
 		// Unsupported color, return to-color (#3920)
 		if (!to.rgba.length || !from.rgba.length) {
-			Highcharts.error(23);
-			ret = to.raw;
+			ret = to.input || 'none';
 
 		// Interpolate
 		} else {
@@ -62,9 +65,9 @@
 	 * Handle animation of the color attributes directly
 	 */
 	each(['fill', 'stroke'], function (prop) {
-		HighchartsAdapter.addAnimSetter(prop, function (fx) {
-			fx.elem.attr(prop, tweenColors(H.Color(fx.start), H.Color(fx.end), fx.pos));
-		});
+		H.Fx.prototype[prop + 'Setter'] = function () {
+			this.elem.attr(prop, tweenColors(H.Color(this.start), H.Color(this.end), this.pos));
+		};
 	});
 
 	// Add language
@@ -128,9 +131,21 @@
 			levelSeries = [],
 			levelSeriesOptions = [],
 			level,
-			levelNumber;
+			levelNumber,
+			last;
 
+		if (!this.drilldownLevels) {
+			this.drilldownLevels = [];
+		}
+		
 		levelNumber = oldSeries.options._levelNumber || 0;
+
+		// See if we can reuse the registered series from last run
+		last = this.drilldownLevels[this.drilldownLevels.length - 1];
+		if (last && last.levelNumber !== levelNumber) {
+			last = undefined;
+		}
+		
 			
 		ddOptions = extend({
 			color: color,
@@ -140,12 +155,18 @@
 
 		// Record options for all current series
 		each(oldSeries.chart.series, function (series) {
-			if (series.xAxis === xAxis) {
-				levelSeries.push(series);
+			if (series.xAxis === xAxis && !series.isDrilling) {
 				series.options._ddSeriesId = series.options._ddSeriesId || ddSeriesId++;
 				series.options._colorIndex = series.userOptions._colorIndex;
-				levelSeriesOptions.push(series.options);
 				series.options._levelNumber = series.options._levelNumber || levelNumber; // #3182
+
+				if (last) {
+					levelSeries = last.levelSeries;
+					levelSeriesOptions = last.levelSeriesOptions;
+				} else {
+					levelSeries.push(series);
+					levelSeriesOptions.push(series.options);
+				}
 			}
 		});
 
@@ -169,10 +190,7 @@
 			}
 		};
 
-		// Generate and push it to a lookup array
-		if (!this.drilldownLevels) {
-			this.drilldownLevels = [];
-		}
+		// Push it to the lookup array
 		this.drilldownLevels.push(level);
 
 		newSeries = level.lowerSeries = this.addSeries(ddOptions, false);
@@ -298,7 +316,8 @@
 				if (!oldSeries.chart) {  // #2786
 					seriesI = chartSeries.length; // #2919
 					while (seriesI--) {
-						if (chartSeries[seriesI].options.id === level.lowerSeriesOptions.id) {
+						if (chartSeries[seriesI].options.id === level.lowerSeriesOptions.id && 
+								chartSeries[seriesI].options._levelNumber === levelNumber + 1) { // #3867
 							oldSeries = chartSeries[seriesI];
 							break;
 						}
@@ -331,6 +350,9 @@
 			}
 		}
 
+		// Fire a once-off event after all series have been drilled up (#5158)
+		fireEvent(chart, 'drillupall');
+
 		this.redraw();
 
 		if (this.drilldownLevels.length === 0) {
@@ -342,7 +364,7 @@
 			.align();
 		}
 
-		dupes.length = []; // #3315
+		this.ddDupes.length = []; // #3315
 	};
 
 
@@ -507,17 +529,21 @@
 		});
 	}
 	
-	H.Point.prototype.doDrilldown = function (_holdRedraw, category) {
+	H.Point.prototype.doDrilldown = function (_holdRedraw, category, originalEvent) {
 		var series = this.series,
 			chart = series.chart,
 			drilldown = chart.options.drilldown,
 			i = (drilldown.series || []).length,
 			seriesOptions;
+
+		if (!chart.ddDupes) {
+			chart.ddDupes = [];
+		}
 		
 		while (i-- && !seriesOptions) {
-			if (drilldown.series[i].id === this.drilldown && inArray(this.drilldown, dupes) === -1) {
+			if (drilldown.series[i].id === this.drilldown && inArray(this.drilldown, chart.ddDupes) === -1) {
 				seriesOptions = drilldown.series[i];
-				dupes.push(this.drilldown);
+				chart.ddDupes.push(this.drilldown);
 			}
 		}
 
@@ -527,29 +553,91 @@
 			point: this,
 			seriesOptions: seriesOptions,
 			category: category,
-			points: category !== undefined && this.series.xAxis.ticks[category].label.ddPoints.slice(0)
+			originalEvent: originalEvent,
+			points: category !== undefined && this.series.xAxis.ddPoints[category].slice(0)
+		}, function (e) {
+			var chart = e.point.series && e.point.series.chart,
+				seriesOptions = e.seriesOptions;
+			if (chart && seriesOptions) {
+				if (_holdRedraw) {
+					chart.addSingleSeriesAsDrilldown(e.point, seriesOptions);
+				} else {
+					chart.addSeriesAsDrilldown(e.point, seriesOptions);
+				}
+			}
 		});
 		
-		if (seriesOptions) {
-			if (_holdRedraw) {
-				chart.addSingleSeriesAsDrilldown(this, seriesOptions);
-			} else {
-				chart.addSeriesAsDrilldown(this, seriesOptions);
-			}
-		}
+
 	};
 
 	/**
 	 * Drill down to a given category. This is the same as clicking on an axis label.
 	 */
-	H.Axis.prototype.drilldownCategory = function (x) {
-		each(this.ticks[x].label.ddPoints, function (point) {
-			if (point.series && point.series.visible && point.doDrilldown) { // #3197
-				point.doDrilldown(true, x);
+	H.Axis.prototype.drilldownCategory = function (x, e) {
+		var key,
+			point,
+			ddPointsX = this.ddPoints[x];
+		for (key in ddPointsX) {
+			point = ddPointsX[key];
+			if (point && point.series && point.series.visible && point.doDrilldown) { // #3197
+				point.doDrilldown(true, x, e);
 			}
-		});
+		}
 		this.chart.applyDrilldown();
 	};
+
+	/**
+	 * Create and return a collection of points associated with the X position. Reset it for each level.
+	 */	
+	H.Axis.prototype.getDDPoints = function (x, levelNumber) {
+		var ddPoints = this.ddPoints;
+		if (!ddPoints) {
+			this.ddPoints = ddPoints = {};
+		}
+		if (!ddPoints[x]) {
+			ddPoints[x] = [];
+		}
+		if (ddPoints[x].levelNumber !== levelNumber) {
+			ddPoints[x].length = 0; // reset
+		}
+		return ddPoints[x];
+	};
+
+
+	/**
+	 * Make a tick label drillable, or remove drilling on update
+	 */
+	Tick.prototype.drillable = function () {
+		var pos = this.pos,
+			label = this.label,
+			axis = this.axis,
+			ddPointsX = axis.ddPoints && axis.ddPoints[pos];
+
+		if (label && ddPointsX && ddPointsX.length) {
+			if (!label.basicStyles) {
+				label.basicStyles = H.merge(label.styles);
+			}
+			label
+				.addClass('highcharts-drilldown-axis-label')
+				.css(axis.chart.options.drilldown.activeAxisLabelStyle)
+				.on('click', function (e) {
+					axis.drilldownCategory(pos, e);
+				});
+
+		} else if (label && label.basicStyles) {
+			label.styles = {}; // reset for full overwrite of styles
+			label.css(label.basicStyles);
+			label.on('click', null); // #3806			
+		}
+	};
+
+	/**
+	 * Always keep the drillability updated (#3951)
+	 */
+	wrap(Tick.prototype, 'addLabel', function (proceed) {
+		proceed.call(this);
+		this.drillable();
+	});
 	
 
 	/**
@@ -558,25 +646,19 @@
 	 */
 	wrap(H.Point.prototype, 'init', function (proceed, series, options, x) {
 		var point = proceed.call(this, series, options, x),
-			chart = series.chart,
-			tick = series.xAxis && series.xAxis.ticks[x],
-			tickLabel = tick && tick.label;
+			xAxis = series.xAxis,
+			tick = xAxis && xAxis.ticks[x],
+			ddPointsX = xAxis && xAxis.getDDPoints(x, series.options._levelNumber);
 
-		// Create a collection of points associated with the label. Reset it for each level.
-		if (tickLabel) {
-			if (!tickLabel.ddPoints) {
-				tickLabel.ddPoints = [];
-			}
-			if (tickLabel.levelNumber !== series.options._levelNumber) {
-				tickLabel.ddPoints.length = 0; // reset
-			}
-		}				
-		
 		if (point.drilldown) {
 			
 			// Add the click event to the point 
-			H.addEvent(point, 'click', function () {
-				point.doDrilldown();
+			H.addEvent(point, 'click', function (e) {
+				if (series.xAxis && series.chart.options.drilldown.allowPointDrilldown === false) {
+					series.xAxis.drilldownCategory(x, e);
+				} else {
+					point.doDrilldown(undefined, undefined, e);
+				}
 			});
 			/*wrap(point, 'importEvents', function (proceed) { // wrapping importEvents makes point.click event work
 				if (!this.hasImportedEvents) {
@@ -587,26 +669,18 @@
 				}
 			});*/
 
-			// Make axis labels clickable
-			if (tickLabel) {
-				if (!tickLabel.basicStyles) {
-					tickLabel.basicStyles = H.merge(tickLabel.styles);
-				}
-				tickLabel
-					.addClass('highcharts-drilldown-axis-label')
-					.css(chart.options.drilldown.activeAxisLabelStyle)
-					.on('click', function () {
-						series.xAxis.drilldownCategory(x);
-					});
-				
-				tickLabel.ddPoints.push(point);
-				tickLabel.levelNumber = series.options._levelNumber;
-					
+
+			// Register drilldown points on this X value
+			if (ddPointsX) {
+				ddPointsX.push(point);
+				ddPointsX.levelNumber = series.options._levelNumber;
 			}
-		} else if (tickLabel && tickLabel.basicStyles && tickLabel.levelNumber !== series.options._levelNumber) {
-			tickLabel.styles = {}; // reset for full overwrite of styles
-			tickLabel.css(tickLabel.basicStyles);
-			tickLabel.on('click', null); // #3806			
+
+		}
+
+		// Add or remove click handler and style on the tick label
+		if (tick) {
+			tick.drillable();
 		}
 
 		return point;
@@ -623,10 +697,7 @@
 					.attr({
 						'class': 'highcharts-drilldown-data-label'
 					})
-					.css(css)
-					.on('click', function () {
-						point.doDrilldown();
-					});
+					.css(css);
 			}
 		});
 	});
@@ -651,4 +722,4 @@
 		}
 	}
 		
-}(Highcharts));
+}));

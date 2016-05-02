@@ -18,7 +18,6 @@ if($result = $data_mysqli->query($sql))
 
 ?>
 
-
 <div class="col-md-11">
  	<h2>Panel de temperaturas actuales</h2>
  	</br>
@@ -28,11 +27,10 @@ if($result = $data_mysqli->query($sql))
  		</div>
 	 	<div class="col-md-4">
 	 		<h5 class="text-center">Tº ambiental sobre cuba 1</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">
-	 			<?php
-	 			echo $data[infoData];
-	 			?>ºC</button>
-	 		<h6>Fecha última medición:
+
+			<div class="col-md-12" id="grafico_G1" style="width: 300px; height: 200px; float: left"></div>
+
+	 		<h6 class="text-center">Fecha última medición:
 	 			<?php
 	 			echo $data[timeData];
 	 			?></h6>
@@ -53,12 +51,11 @@ if($result = $data_mysqli->query($sql))
 
 ?>
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Tº ambiental sobre cuba 2 (a)</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">
-	 			<?php
-	 			echo $data[infoData];
-	 			?>ºC</button>
-	 		<h6>Fecha última medición:
+	 		<h5 class="text-center">Tº ambiental sobre cuba 2</h5>
+
+			<div class="col-md-12" id="grafico_G2" style="width: 300px; height: 200px; float: left"></div>
+
+	 		<h6 class="text-center">Fecha última medición:
 	 			<?php
 	 			echo $data[timeData];
 	 			?></h6>
@@ -80,12 +77,11 @@ if($result = $data_mysqli->query($sql))
 
 ?>
 	 	<div class="col-md-4">
-	 		<h5 class="text-center">Tº ambiental sobre cuba 2 (b)</h5>
-	 		<button type="button" class="btn btn-info btn-lg btn-block">
-	 			<?php
-	 			echo $data[infoData];
-	 			?>ºC</button>
-	 		<h6>Fecha última medición:
+	 		<h5 class="text-center">Tº ambiental sobre cuba 3</h5>
+
+			<div class="col-md-12" id="grafico_G3" style="width: 300px; height: 200px; float: left"></div>
+
+	 		<h6 class="text-center">Fecha última medición:
 	 			<?php
 	 			echo $data[timeData];
 	 			?></h6>
@@ -225,3 +221,164 @@ if($result = $data_mysqli->query($sql))
 	 </div>
 	 <br>
 </div><!-- col-md-11 -->
+
+
+<script type="text/javascript">
+$(function () {
+    
+    var gaugeOptions = {
+
+        chart: {
+            type: 'solidgauge'
+        },
+
+        title: null,
+
+        pane: {
+            center: ['50%', '85%'],
+            size: '140%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        tooltip: {
+            enabled: false
+        },
+
+        // the value axis
+        yAxis: {
+            stops: [
+                [0.1, '#55BF3B'], // green
+                [0.5, '#DDDF0D'], // yellow
+                [0.9, '#DF5353'] // red
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickPixelInterval: 400,
+            tickWidth: 0,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+
+    //temp 1 
+    $('#grafico_G1').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 50,
+            title: {
+                text: ''
+            }
+        },
+
+		exporting: { enabled: false 
+		},
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Temp',
+            data: [19],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}ºC</span><br/>' +
+                       '<span style="font-size:12px;color:silver"></span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' ºC'
+            }
+        }]
+
+    }));
+
+    //temp 2
+    $('#grafico_G2').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 50,
+            title: {
+                text: ''
+            }
+        },
+
+		exporting: { enabled: false 
+		},
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Temp',
+            data: [13],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}ºC</span><br/>' +
+                       '<span style="font-size:12px;color:silver"></span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' ºC'
+            }
+        }]
+
+    }));
+    //temp 3
+    $('#grafico_G3').highcharts(Highcharts.merge(gaugeOptions, {
+        yAxis: {
+            min: 0,
+            max: 50,
+            title: {
+                text: ''
+            }
+        },
+
+		exporting: { enabled: false 
+		},
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'Temp',
+            data: [38],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}ºC</span><br/>' +
+                       '<span style="font-size:12px;color:silver"></span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' ºC'
+            }
+        }]
+
+    }));
+
+    //agregar otra acá
+
+});
+</script>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>

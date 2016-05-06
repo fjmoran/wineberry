@@ -1,9 +1,24 @@
-<div class="col-md-11">
+<div class="col-md-1"></div>
+<div class="col-md-10">
 	<h2>Gráfico temperatura en cuba #2</h2>
-	</br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                  <label for="rol">Ir a:</label>
+                    <select id="rol" class="form-control">
+                        <option></option>
+                        <option>Cuba #1</option>
+                        <option>Cuba #3</option>
+                        <option>Cuba #4</option>
+                    </select>          
+                </div>
+            </div>
+            <div class="col-md-8"></div>
+        </div> 
 	<div class="graph-report" id="grafico_cuba">
-	</div>	
-</div><!-- col-md-11 -->
+	</div>
+<div class="col-md-1"></div>    	
+</div><!-- col-md -->
 
 
 <script type="text/javascript">

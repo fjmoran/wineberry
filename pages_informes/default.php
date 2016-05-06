@@ -4,8 +4,8 @@
 include_once "../recursos/zhi/CreaConnv2.php";
 
 ?>
-
-<div class="col-md-11">
+<div class="col-md-1"></div>
+<div class="col-md-10">
  	<h2>Panel de control</h2>
  	</br>     
     <div class="row bs-sidenav">
@@ -14,16 +14,14 @@ include_once "../recursos/zhi/CreaConnv2.php";
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-4">
-            <h5 class="text-center">Humedad</h5>
-            <button type="button" class="btn btn-success btn-lg btn-block">
-            44%</button>
+            <h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempamb.php');"><a href="#inf_tempamb">Humedad</a></h5>
+            <a class="btn btn-success btn-lg btn-block" href="#inf_tempamb" role="button" onclick="$('#cuerpo').load('pages_informes/tempamb.php');">44%</a>
             <h6 class="text-center">Fecha última medición: 3 min. atrás</h6>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <h5 class="text-center">Temperatura</h5>
-            <button type="button" class="btn btn-success btn-lg btn-block">
-            25ºC</button>
+            <h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempamb.php');"><a href="#inf_tempamb">Temperatura</a></h5>
+            <a class="btn btn-success btn-lg btn-block" href="#inf_tempamb" role="button" onclick="$('#cuerpo').load('pages_informes/tempamb.php');">27ºC</a>
             <h6 class="text-center">Fecha última medición: 4 min. atrás</h6>
         </div>
         <div class="col-md-1"></div>
@@ -33,13 +31,13 @@ include_once "../recursos/zhi/CreaConnv2.php";
  			<h4>Temperatura Cubas</h4>
  		</div>
 	 	<div class="col-md-6">
-	 		<h5 class="text-center">Tº cuba #1</h5>
+	 		<h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba1.php');"><a href="#inf_tempamb">Tº cuba #1</a></h5>
 
 			<div class="col-md-12" id="grafico_G1" style="width: 100%; height: 230px; float: left;"></div>
 			<h6 class="text-center">Fecha última medición: 5 min. atrás</h6>
 	 	</div> 		 
 	  	<div class="col-md-6">
-	 		<h5 class="text-center">Tº cuba #2</h5>
+	 		<h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba2.php');"><a href="#inf_tempamb">Tº cuba #2</a></h5>
 
 			<div class="col-md-12" id="grafico_G2" style="width: 100%; height: 230px; float: left"></div>
 			<h6 class="text-center">Fecha última medición: 5 min. atrás</h6>
@@ -59,7 +57,9 @@ include_once "../recursos/zhi/CreaConnv2.php";
 	</div>
 
 
-</div><!-- col-md-11 -->
+</div>
+<div class="col-md-1"></div>
+<!-- col-md -->
 
 
 <script type="text/javascript">

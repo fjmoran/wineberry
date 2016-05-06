@@ -37,12 +37,13 @@ $inicio_date_serie2 = preg_split("/[\s,]+/",$data_serie2[0][timeData]);
 //print_r($inicio_date);
 ?>
 
-
-<div class="col-md-11">
+<div class="col-md-1"></div>
+<div class="col-md-10">
 	<h2>Sensores de temperatura ambiental</h2>
 	<div class="graph-report" id="grafico">
-	</div>	
-</div><!-- col-md-11 -->
+	</div>
+<div class="col-md-1"></div>	
+</div><!-- col-md -->
 
 
 <script type="text/javascript">

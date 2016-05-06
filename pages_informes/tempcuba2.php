@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                  <label for="rol">Ir a:</label>
-                    <select id="rol" class="form-control">
+                  <label for="ir_a">Ir a:</label>
+                    <select id="ir_a" class="form-control">
                         <option></option>
                         <option>Cuba #1</option>
                         <option>Cuba #3</option>

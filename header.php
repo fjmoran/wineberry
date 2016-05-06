@@ -2,7 +2,7 @@
       <div class="container">
         <div class="navbar-header">
           <img class="pull-left img-header" src="img/logo_zhi_small.png" alt="Logo">
-          <a class="navbar-brand" href="index.php">Sistema de control ambiental</a>
+          <a class="navbar-brand" href="index.php">SensoSmart&trade;</a>
         </div>
         <div class="navbar-form navbar-right">
           <div class="btn-group">

@@ -15,7 +15,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
         <div class="col-md-1"></div>
         <div class="col-md-4">
             <h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempamb.php');"><a href="#inf_tempamb">Humedad</a></h5>
-            <a class="btn btn-success btn-lg btn-block" href="#inf_tempamb" role="button" onclick="$('#cuerpo').load('pages_informes/tempamb.php');">44%</a>
+            <a class="btn btn-success btn-lg btn-block" href="#inf_tempamb" role="button" onclick="$('#cuerpo').load('pages_informes/tempamb.php');">74%</a>
             <h6 class="text-center">Fecha última medición: 3 min. atrás</h6>
         </div>
         <div class="col-md-2"></div>

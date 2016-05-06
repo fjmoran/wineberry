@@ -8,7 +8,7 @@ session_destroy();
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>Sistema de control ambiental vitivinicola</title>
+    <title>SensoSmart&trade; - Sistema de control ambiental vitivinicola</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,8 +28,8 @@ session_destroy();
 
     <div class="navbar navbar-inverse" role="navigation">
       <div class="navbar-header">
-      <img class="pull-left img-header" src="img/logo_romero_small.png" alt="Logo">  
-      <a class="navbar-brand" href="#">Sistema de Control ambiental</a>
+     <!-- <img class="pull-left img-header" src="img/logo_zhi_small.png" alt="Logo">  -->
+      <a class="navbar-brand" href="#">SensoSmart&trade;</a>
       </div>
     </div><!--.navbar-->
 

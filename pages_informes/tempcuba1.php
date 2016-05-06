@@ -18,36 +18,25 @@
 	<div class="graph-report" id="grafico_cuba">
 	</div>
 <div class="col-md-1"></div> </br>
-<div class="col-md-4">
+<div class="col-md-12">
     <div class="row bs-sidenav">
-        <div class="col-md-12">  
+        <div class="col-md-4">  
             <h4>Control de frio:</h4>
             <label>
-                <input type="checkbox" name="rf-switch-1">
+                <input type="checkbox" name="rf-switch-1" class="boton_x">
             </label>
         </div>
-    </div> 
-</div> 
-<div class="col-md-4">
-    <div class="row bs-sidenav">
-        <div class="col-md-12">  
+        <div class="col-md-4">  
             <h4>Control de calor:</h4>
             <label>
-                <input type="checkbox" name="rf-switch-2">
+                <input type="checkbox" name="rf-switch-2" class="boton_x">
             </label>            
-        </div>
+        </div> 
+        <div class="col-md-4">  
+            <h4>Parámetros:</h4>   
+        </div>               
     </div> 
-</div> 
-<div class="col-md-4">
-     <div class="row bs-sidenav">
-        <div class="col-md-12">  
-            <h4>Parámetros:</h4>
-
-
-          
-        </div>
-    </div>   
-</div>      	
+</div>       	
 </div><!-- col-md -->
 
 
@@ -105,7 +94,7 @@ $(function () {
             }, { // Gentle breeze
                 from: 17.1,
                 to: 25,
-                color: 'rgba(68, 170, 213, 0.1)',
+                color: 'rgba(255, 17, 17, 0.1)',
                 label: {
                     text: 'Banda Superior',
                     style: {
@@ -148,6 +137,6 @@ $(function () {
     });
 });
 
-$("input[type=checkbox]").switchButton({
+$("input[class=boton_x]").switchButton({
  })
 </script>

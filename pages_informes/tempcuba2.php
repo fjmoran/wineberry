@@ -75,7 +75,7 @@ $(function () {
             }, { // Gentle breeze
                 from: 17.1,
                 to: 25,
-                color: 'rgba(68, 170, 213, 0.1)',
+                color: 'rgba(255, 17, 17, 0.1)',
                 label: {
                     text: 'Banda Superior',
                     style: {

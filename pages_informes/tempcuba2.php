@@ -1,5 +1,5 @@
 <div class="col-md-11">
-	<h2>Sensores de temperatura en cubas</h2>
+	<h2>Gráfico temperatura en cuba #2</h2>
 	</br>
 	<div class="graph-report" id="grafico_cuba">
 	</div>	
@@ -11,12 +11,15 @@ $(function () {
     $('#grafico_cuba').highcharts({
     	credits: {
       		enabled: false
-  		}, 
+  		},
+        exporting: { 
+            enabled: false 
+        },         
         chart: {
             type: 'spline'
         },
         title: {
-            text: 'Cuba Nº1, Sector Norte'
+            text: ''
         },
         subtitle: {
             text: ''

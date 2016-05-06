@@ -9,12 +9,13 @@ require_once("recursos/zhi/funciones.php");
     <div class="bs-sidebar">
       <ul class="nav bs-sidenav">
         <li class="nav-header">Temperaturas</li>
-        <li onclick="$('#cuerpo').load('pages_informes/tempamb.php');"><a href="#inf_tempamb"><span class="glyphicon glyphicon-chevron-right"></span> Tº ambiental</a></li>
-        <li onclick="$('#cuerpo').load('pages_informes/tempcuba.php');"><a href="#inf_tempcuba"><span class="glyphicon glyphicon-chevron-right"></span> Tº cubas</a></li>
-        <li class="nav-header">Ubicación de Sensores</li>
+        <li onclick="$('#cuerpo').load('pages_informes/tempamb.php');"><a href="#inf_tempamb"><span class="glyphicon glyphicon-chevron-right"></span> Info. Ambiental</a></li>
+        <li onclick="$('#cuerpo').load('pages_informes/tempcuba1.php');"><a href="#inf_tempcuba"><span class="glyphicon glyphicon-chevron-right"></span> Tº cuba 1</a></li>
+        <li onclick="$('#cuerpo').load('pages_informes/tempcuba2.php');"><a href="#inf_tempcuba"><span class="glyphicon glyphicon-chevron-right"></span> Tº cuba 2</a></li>
+      <!--  <li class="nav-header">Ubicación de Sensores</li>
         <li onclick="$('#cuerpo').load('pages_informes/mapa.php');"><a href="#inf_mapa"><span class="glyphicon glyphicon-chevron-right"></span> Mapa sensores</a></li> 
         <li class="nav-header">Testing</li> 
-        <li onclick="$('#cuerpo').load('pages_informes/test.php');"><a href="#inf_test"><span class="glyphicon glyphicon-chevron-right"></span> Test switch on/off</a></li>          
+        <li onclick="$('#cuerpo').load('pages_informes/test.php');"><a href="#inf_test"><span class="glyphicon glyphicon-chevron-right"></span> Test switch on/off</a></li>  -->        
       </ul>
     </div>
   </div>

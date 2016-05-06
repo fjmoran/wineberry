@@ -1,7 +1,7 @@
  <div class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <img class="pull-left img-header" src="img/logo_romero_small.png" alt="Logo">
+          <img class="pull-left img-header" src="img/logo_zhi_small.png" alt="Logo">
           <a class="navbar-brand" href="index.php">Sistema de control ambiental</a>
         </div>
         <div class="navbar-form navbar-right">

@@ -53,6 +53,8 @@ require "recursos/zhi/auth.php";
   <script src="recursos/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>  
   <script src="recursos/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="recursos/highcharts/js/highcharts.js"></script>
+  <script src="recursos/highcharts/js/highcharts-more.js"></script>
+  <script src="recursos/highcharts/js/modules/solid-gauge.js"></script>
   <script src="recursos/highcharts/js/modules/exporting.js"></script>
   <script src="recursos/jQuery-switchButton/jquery.switchButton.js"></script>
   

@@ -31,25 +31,25 @@ include_once "../recursos/zhi/CreaConnv2.php";
  			<h4>Temperatura Cubas</h4>
  		</div>
 	 	<div class="col-md-6">
-	 		<h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba1.php');"><a href="#inf_tempamb">Tº cuba #1</a></h5>
+	 		<h4 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba1.php');"><a href="#inf_tempamb">Tº cuba #1</a></h4>
 
 			<div class="col-md-12" id="grafico_G1" style="width: 100%; height: 230px; float: left;"></div>
 			<h6 class="text-center">Fecha última medición: 5 min. atrás</h6>
 	 	</div> 		 
 	  	<div class="col-md-6">
-	 		<h5 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba2.php');"><a href="#inf_tempamb">Tº cuba #2</a></h5>
+	 		<h4 class="text-center" onclick="$('#cuerpo').load('pages_informes/tempcuba2.php');"><a href="#inf_tempamb">Tº cuba #2</a></h4>
 
 			<div class="col-md-12" id="grafico_G2" style="width: 100%; height: 230px; float: left"></div>
 			<h6 class="text-center">Fecha última medición: 5 min. atrás</h6>
 	 	</div>
 	  	<div class="col-md-6">
-	 		<h5 class="text-center">Tº cuba #3</h5>
+	 		<h4 class="text-center">Tº cuba #3</h4>
 
 			<div class="col-md-12" id="grafico_G3" style="width: 100%; height: 230px; float: left"></div>
 			<h6 class="text-center">Fecha última medición: Sin medición</h6>
 	 	</div>
 	  	<div class="col-md-6">
-	 		<h5 class="text-center">Tº cuba #4</h5>
+	 		<h4 class="text-center">Tº cuba #4</h4>
 
 			<div class="col-md-12" id="grafico_G4" style="width: 100%; height: 230px; float: left"></div>
 			<h6 class="text-center">Fecha última medición: Sin medición</h6>

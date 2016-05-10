@@ -6,7 +6,7 @@
                 <div class="form-group">
                   <label for="ir_a">Ir a:</label>
                     <select id="ir_a" class="form-control">
-                        <option></option>
+                        <option>--- Seleccione una cuba ---</option>
                         <option>Cuba #2</option>
                         <option>Cuba #3</option>
                         <option>Cuba #4</option>

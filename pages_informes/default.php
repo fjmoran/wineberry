@@ -10,7 +10,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
  	</br>     
     <div class="row bs-sidenav">
         <div class="col-md-12">
-            <h4>Condiciones ambientales</h4>
+            <h4>Condiciones Ambientales</h4>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-4">

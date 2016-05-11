@@ -1,12 +1,12 @@
 <div class="col-md-1"></div>
 <div class="col-md-10">
-	<h2>Gráfico temperatura en cuba #2</h2>
+    <h2>Gráfico temperatura en cuba #2</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                   <label for="ir_a">Ir a:</label>
                     <select id="ir_a" class="form-control">
-                        <option></option>
+                        <option>--- Seleccione una cuba ---</option>
                         <option>Cuba #1</option>
                         <option>Cuba #3</option>
                         <option>Cuba #4</option>
@@ -14,19 +14,80 @@
                 </div>
             </div>
             <div class="col-md-8"></div>
+        </div>   
+    <div class="graph-report" id="grafico_cuba">
+    </div>
+<div class="col-md-1"></div> </br>
+<div class="col-md-12">
+    <div class="row bs-sidenav">
+        <div class="col-md-4">  
+            <h4>Control de frio:</h4>
+            <label>
+                <input type="checkbox" name="rf-switch-1" class="boton_x">
+            </label></br>
+            <img src="img/mercury-thermometer-and-a-snowflake.png" alt="cold" height="25%" width="25%">
+        </div>
+        <div class="col-md-4">  
+            <h4>Control de calor:</h4>
+            <label>
+                <input type="checkbox" name="rf-switch-2" class="boton_x">
+            </label></br>
+            <img src="img/mercury-thermometer-with-sun.png" alt="hot" height="25%" width="25%">            
         </div> 
-	<div class="graph-report" id="grafico_cuba">
-	</div>
-<div class="col-md-1"></div>    	
+        <div class="col-md-4">  
+            <h4>Parámetros:</h4> 
+            <form>
+              <div class="form-group">
+                <label for="obj_temp">Temperatura objetivo (Cº)</label>
+                <input type="text" class="form-control" id="obj_temp" placeholder="" value="15" disabled>
+              </div>
+              <div class="form-group">
+                <label for="tolerancia_temp">Tolerancia (Cº)</label>
+                <input type="text" class="form-control" id="tolerancia_temp" placeholder="" value="5" disabled>
+              </div>
+              <button type="button" class="btn btn-primary pull-right"  data-toggle="modal" data-target="#editarTemp">Editar</button>
+            </form>  
+        </div>               
+    </div> 
+</div>          
 </div><!-- col-md -->
+<!-- Modal -->
+<div class="modal fade" id="editarTemp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar temperatura objetivo de la cuba</h4>
+      </div>
+      <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="obj_temp_edit">Temperatura objetivo (Cº)</label>
+                <input type="text" class="form-control" id="obj_temp_edit" placeholder="" value="15">
+              </div>
+              <div class="form-group">
+                <label for="tolerancia_temp_edit">Tolerancia (Cº)</label>
+                <input type="text" class="form-control" id="tolerancia_temp_edit" placeholder="" value="5">
+              </div>
+            </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal -->
+
 
 
 <script type="text/javascript">
 $(function () {
     $('#grafico_cuba').highcharts({
-    	credits: {
-      		enabled: false
-  		},
+        credits: {
+            enabled: false
+        },
         exporting: { 
             enabled: false 
         },         
@@ -104,7 +165,7 @@ $(function () {
         },
         series: [{
             name: 'tº Interna',
-            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 17.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
+            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
 
         }, {
             name: 'tº Externa',
@@ -117,4 +178,7 @@ $(function () {
         }
     });
 });
+
+$("input[class=boton_x]").switchButton({
+ })
 </script>

@@ -19,7 +19,7 @@ require_once("recursos/zhi/funciones.php");
       </ul>
     </div>
   </div> -->
- <div class="col-md-12"> 
+ <div class="col-md-12"> <!-- Si se pone el menu lateral debe ser col-md-10--> 
    <div class="container">
 
     <div class="btn-group pull-right">

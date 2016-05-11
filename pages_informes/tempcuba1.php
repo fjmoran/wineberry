@@ -24,20 +24,62 @@
             <h4>Control de frio:</h4>
             <label>
                 <input type="checkbox" name="rf-switch-1" class="boton_x">
-            </label>
+            </label></br>
+            <img src="img/mercury-thermometer-and-a-snowflake.png" alt="cold" height="25%" width="25%">
         </div>
         <div class="col-md-4">  
             <h4>Control de calor:</h4>
             <label>
                 <input type="checkbox" name="rf-switch-2" class="boton_x">
-            </label>            
+            </label></br>
+            <img src="img/mercury-thermometer-with-sun.png" alt="hot" height="25%" width="25%">            
         </div> 
         <div class="col-md-4">  
-            <h4>Parámetros:</h4>   
+            <h4>Parámetros:</h4> 
+            <form>
+              <div class="form-group">
+                <label for="obj_temp">Temperatura objetivo (Cº)</label>
+                <input type="text" class="form-control" id="obj_temp" placeholder="" value="15" disabled>
+              </div>
+              <div class="form-group">
+                <label for="tolerancia_temp">Tolerancia (Cº)</label>
+                <input type="text" class="form-control" id="tolerancia_temp" placeholder="" value="5" disabled>
+              </div>
+              <button type="button" class="btn btn-primary pull-right"  data-toggle="modal" data-target="#editarTemp">Editar</button>
+            </form>  
         </div>               
     </div> 
 </div>       	
 </div><!-- col-md -->
+<!-- Modal -->
+<div class="modal fade" id="editarTemp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editar temperatura objetivo de la cuba</h4>
+      </div>
+      <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="obj_temp_edit">Temperatura objetivo (Cº)</label>
+                <input type="text" class="form-control" id="obj_temp_edit" placeholder="" value="15">
+              </div>
+              <div class="form-group">
+                <label for="tolerancia_temp_edit">Tolerancia (Cº)</label>
+                <input type="text" class="form-control" id="tolerancia_temp_edit" placeholder="" value="5">
+              </div>
+            </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal -->
+
 
 
 <script type="text/javascript">

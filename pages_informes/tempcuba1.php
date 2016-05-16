@@ -115,7 +115,7 @@ $(function () {
             alternateGridColor: null,
             plotBands: [{ 
                 from: 0.0,
-                to: 12,
+                to: 10,
                 color: 'rgba(68, 170, 213, 0.1)',
                 label: {
                     text: 'Banda Inferior',
@@ -124,8 +124,8 @@ $(function () {
                     }
                 }
             }, { // Light breeze
-                from: 12.1,
-                to: 17,
+                from: 10.1,
+                to: 20,
                 color: 'rgba(0, 0, 0, 0)',
                 label: {
                     text: 'Normal',
@@ -134,7 +134,7 @@ $(function () {
                     }
                 }
             }, { // Gentle breeze
-                from: 17.1,
+                from: 20.1,
                 to: 80,
                 color: 'rgba(255, 17, 17, 0.1)',
                 label: {

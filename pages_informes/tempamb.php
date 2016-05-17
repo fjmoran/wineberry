@@ -1,155 +1,143 @@
 <?php
-/*
-//include "auth.php"
-*/
+
 include_once "../recursos/zhi/CreaConnv2.php";
 
-$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='1' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
-$contador_serie1 = 0;
-
-//echo "$sql <br>";
-
-if ($result = $mysqli->query($sql))
-{
-	while ($row = $result->fetch_assoc()) 
-	{
-		$data_serie1[$contador_serie1++]=$row;
-	}
-	$result->free();
-}
-
-$sql = "select infoData, convert_tz(timeData,'+00:00','-03:00') as timeData from Data where Device_idDevice='2' and timeData > DATE_SUB(now(), INTERVAL 1 DAY) order by timeData ASC";
-$contador_serie2 = 0;
-if ($result = $mysqli->query($sql))
-{
-	while ($row = $result->fetch_assoc()) 
-	{
-		$data_serie2[$contador_serie2++]=$row;
-	}
-	$result->free();
-}
-
-
-//print_r($data[0]);
-
-$inicio_date_serie1 = preg_split("/[\s,]+/",$data_serie1[0][timeData]);
-$inicio_date_serie2 = preg_split("/[\s,]+/",$data_serie2[0][timeData]);
-//print_r($inicio_date);
 ?>
 
 <div class="col-md-1"></div>
 <div class="col-md-10">
-	<h2>Sensores de temperatura ambiental</h2>
-	<div class="graph-report" id="grafico">
-	</div>
+	<h2>Sensores ambientales</h2>
+	<div class="graph-report" id="grafico_temp">
+	</div> </br>
+    <div class="graph-report" id="grafico_hum">
+    </div> </br>   
 <div class="col-md-1"></div>	
 </div><!-- col-md -->
 
-
 <script type="text/javascript">
 $(function () {
-    $('#grafico').highcharts({
-    	credits: {
-      		enabled: false
-  		},
+    $('#grafico_temp').highcharts({
+        credits: {
+            enabled: false
+        },
+        exporting: { 
+            enabled: false 
+        },         
         chart: {
-            zoomType: 'x'
+            type: 'spline'
         },
         title: {
-            text: 'Temperatura Ambiental'
+            text: 'Temperatura ambiental'
         },
         subtitle: {
-            text: document.ontouchstart === undefined ?
-                    'Haga click y arrastre para hacer zoom' :
-                    'Piche para hacer zoom'
+            text: ''
         },
         xAxis: {
             type: 'datetime',
-            minRange: 1 * 24 * 3600000 // un dia
+            labels: {
+                overflow: 'justify'
+            }
         },
         yAxis: {
             title: {
-                text: 'Temperatura Cº'
-            }
+                text: 'Temperatura (ºC)'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 1,
+            alternateGridColor: null
         },
-        legend: {
-            enabled: true
+        tooltip: {
+            valueSuffix: ' ºC'
         },
         plotOptions: {
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                },
-                marker: {
-                    radius: 2
-                },
-                lineWidth: 1,
+            spline: {
+                lineWidth: 4,
                 states: {
                     hover: {
-                        lineWidth: 1
+                        lineWidth: 5
                     }
                 },
-                threshold: null
+                marker: {
+                    enabled: false
+                },
+                pointInterval: 3600000, // one hour
+                pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
             }
         },
-
         series: [{
-            type: 'line',name: 'Sensor 1 - Temperatura en Cº',
-            pointInterval: 1 * 300 * 1000, //intervalos de 5 min (300000 milliseundos)
-<?php
+            name: 'tº',
+            color: '#00FF00',
+            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
 
-//print_r($inicio_date);
-$fecha_inicio = preg_split("/-/",$inicio_date_serie1[0]);
-$hora_inicio = preg_split("/:/",$inicio_date_serie1[1]);
-//print_r($fecha_inicio);
-?>            
-            pointStart: Date.UTC(
-<?php 
-echo intval($fecha_inicio[0]) . ",";
-echo intval($fecha_inicio[1])-1 . ",";
-echo intval($fecha_inicio[2]) . ",";
-echo intval($hora_inicio[0]) . ",";
-echo intval($hora_inicio[1]) . ",";
-echo intval($hora_inicio[2]);
-?>
-),  // año , mes (enero = 0) , dia
-            data: [
-<?php
-$j=0;
-while ($j<=$contador_serie1)
-{
-	echo $data_serie1[$j++][infoData] . ",";
-}
-?>
-          ]}
-        ,{
-        	type :'line', name:'Sensor 2 - Temperatura en Cº', pointInterval : 1*300*1000,
-        	pointStart : Date.UTC(
-<?php
-$fecha_inicio = preg_split("/-/",$inicio_date_serie2[0]);
-$hora_inicio = preg_split("/:/",$inicio_date_serie2[1]); 
-echo intval($fecha_inicio[0]) . ",";
-echo intval($fecha_inicio[1])-1 . ",";
-echo intval($fecha_inicio[2]) . ",";
-echo intval($hora_inicio[0]) . ",";
-echo intval($hora_inicio[1]) . ",";
-echo intval($hora_inicio[2]);
-?>
-), data :[
-<?php
-$j=0;
-while ($j<=$contador_serie2)
-{
-	echo $data_serie2[$j++][infoData] . ",";
-}
-?>
-
-]}
-        ]
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
     });
 });
-		</script>
+
+$(function () {
+    $('#grafico_hum').highcharts({
+        credits: {
+            enabled: false
+        },
+        exporting: { 
+            enabled: false 
+        },         
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: 'Humedad ambiental'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Humedad (%)'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 1,
+            alternateGridColor: null
+        },
+        tooltip: {
+            valueSuffix: ' %'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                },
+                pointInterval: 3600000, // one hour
+                pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+            }
+        },
+        series: [{
+            name: '%',
+            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    });
+});
+
+</script>

@@ -21,6 +21,10 @@ require "recursos/zhi/auth.php";
     <link href="recursos/jQuery-switchButton/jquery.switchButton.css" rel="stylesheet">
     <!-- Fav Icon -->    
     <link href="img/favicon.ico" rel="SHORTCUT ICON">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- jquery -->  
     <script src="recursos/jquery/jquery-1.10.2.min.js"></script> 
 

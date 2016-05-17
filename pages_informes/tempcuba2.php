@@ -20,19 +20,29 @@
 <div class="col-md-1"></div> </br>
 <div class="col-md-12">
     <div class="row bs-sidenav">
-        <div class="col-md-4">  
-            <h4>Control de frio:</h4>
-            <label>
-                <input type="checkbox" name="rf-switch-1" class="boton_x">
-            </label></br>
-            <img src="img/mercury-thermometer-and-a-snowflake.png" alt="cold" height="25%" width="25%">
+        <div class="col-md-4">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-minus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Control de frio</span>
+                    <span class="info-box-number"></span></br></span>
+                    <label>
+                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                    </label>           
+                </div><!-- /.info-box-content -->
+            </div>
         </div>
         <div class="col-md-4">  
-            <h4>Control de calor:</h4>
-            <label>
-                <input type="checkbox" name="rf-switch-2" class="boton_x">
-            </label></br>
-            <img src="img/mercury-thermometer-with-sun.png" alt="hot" height="25%" width="25%">            
+             <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Control de calor</span>
+                    <span class="info-box-number"></span></br></span>
+                    <label>
+                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                    </label>           
+                </div><!-- /.info-box-content -->
+            </div>    
         </div> 
         <div class="col-md-4">  
             <h4>Parámetros:</h4> 

@@ -2,18 +2,22 @@
 <div class="col-md-10">
     <h2>Gráfico temperatura en cuba #2</h2>
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                  <label for="ir_a">Ir a:</label>
-                    <select id="ir_a" class="form-control">
-                        <option>--- Seleccione una cuba ---</option>
-                        <option>Cuba #1</option>
-                        <option>Cuba #3</option>
-                        <option>Cuba #4</option>
-                    </select>          
-                </div>
+            <div class="col-md-8">
+                
             </div>
-            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <a class="btn btn-default btn-select">
+                    <input type="hidden" class="btn-select-input" id="" name="" value="" />
+                    <span class="btn-select-value">Seleccione un item</span>
+                    <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
+                    <ul>
+                        <li>Cuba 1</li>
+                        <li class="selected">Cuba 2</li>
+                        <li>Cuba 3</li>
+                        <li>Cuba 4</li>
+                    </ul>
+                </a>                 
+            </div>
         </div>   
     <div class="graph-report" id="grafico_cuba">
     </div>

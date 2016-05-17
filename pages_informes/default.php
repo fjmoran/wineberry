@@ -6,7 +6,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
 ?>
 <div class="col-md-1"></div>
 <div class="col-md-10">
- 	<h2>Panel de control</h2>
+ 	<h2>Dashboard</h2>
  	</br>     
     <div class="row bs-sidenav">
         <div class="col-md-12">

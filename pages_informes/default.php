@@ -77,7 +77,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
             </div>
         </div>
         <div class="col-md-3">
-            <div class="info-box bg-green">
+            <div class="info-box bg-gray">
                 <span class="info-box-icon"><i class="fa fa-times"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text"><i class="fa fa-info-circle"></i> Cuba Nº3</span>
@@ -92,7 +92,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
             </div>
         </div>
         <div class="col-md-3">
-            <div class="info-box bg-green">
+            <div class="info-box bg-gray">
                 <span class="info-box-icon"><i class="fa fa-times"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text"><i class="fa fa-info-circle"></i> Cuba Nº4</span>

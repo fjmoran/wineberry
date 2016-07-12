@@ -225,7 +225,7 @@ if($result = $data_mysqli->query($sql))
 
 <script type="text/javascript">
 $(function () {
-    
+
     var gaugeOptions = {
 
         chart: {
@@ -281,7 +281,7 @@ $(function () {
         }
     };
 
-    //temp 1 
+    //temp 1
     $('#grafico_G1').highcharts(Highcharts.merge(gaugeOptions, {
         yAxis: {
             min: 0,
@@ -291,7 +291,7 @@ $(function () {
             }
         },
 
-		exporting: { enabled: false 
+		exporting: { enabled: false
 		},
         credits: {
             enabled: false
@@ -322,7 +322,7 @@ $(function () {
             }
         },
 
-		exporting: { enabled: false 
+		exporting: { enabled: false
 		},
         credits: {
             enabled: false
@@ -352,7 +352,7 @@ $(function () {
             }
         },
 
-		exporting: { enabled: false 
+		exporting: { enabled: false
 		},
         credits: {
             enabled: false
@@ -377,8 +377,3 @@ $(function () {
 
 });
 </script>
-
-
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>

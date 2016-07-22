@@ -13,7 +13,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
 </div>
 </div><!-- col-md-11 -->
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 	$("input[type=checkbox]").switchButton({
 	})
 </script>

@@ -1,6 +1,6 @@
 <?php
 require "recursos/zhi/auth.php";
-?>	
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -10,38 +10,38 @@ require "recursos/zhi/auth.php";
     <!-- Bootstrap -->
     <link href="recursos/bootstrap3/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- Bootstrap FileUload-->
-    <link href="recursos/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet">        
+    <link href="recursos/bootstrap-fileupload/bootstrap-fileupload.min.css" rel="stylesheet">
     <!-- Jquery-ui -->
     <link href="recursos/jquery-ui/css/zhi/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="recursos/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Ionicons -->
+    <link href="recursos/ionicons/css/ionicons.min.css" rel="stylesheet">
     <!-- Zhi CSS -->
-    <link href="recursos/zhi/css/zhi.css" rel="stylesheet"> 
+    <link href="recursos/zhi/css/zhi.css" rel="stylesheet">
     <!-- Button Select CSS -->
-    <link href="recursos/zhi/css/button_select.css" rel="stylesheet">     
+    <link href="recursos/zhi/css/button_select.css" rel="stylesheet">
     <!-- Fonts -->
-    <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
+    <link href='fonts/fonts.css' type='text/css' rel='stylesheet'>
     <!-- switchButton -->
     <link href="recursos/jQuery-switchButton/jquery.switchButton.css" rel="stylesheet">
-    <!-- Fav Icon -->    
+    <!-- Fav Icon -->
     <link href="img/favicon.ico" rel="SHORTCUT ICON">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- jquery -->  
-    <script src="recursos/jquery/jquery-1.10.2.min.js"></script> 
+    <!-- jquery -->
+    <script src="recursos/jquery/jquery-1.10.2.min.js"></script>
 
   </head>
   <body>
-	<?php 
+	<?php
 	include('header.php');
 	include('sidebar.php');
 	?>
 
 	<div id="cuerpo">
 
-   <?php 
-		
-   include('pages_informes/default.php'); 
+   <?php
+
+   include('pages_informes/default.php');
    ?>
 
 	</div>
@@ -54,26 +54,26 @@ require "recursos/zhi/auth.php";
 
  <!-- javascript
   ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->   
+  <!-- Placed at the end of the document so the pages load faster -->
   <script src="recursos/bootstrap3/js/bootstrap.min.js"></script>
-  <script src="recursos/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>  
+  <script src="recursos/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
   <script src="recursos/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="recursos/highcharts/js/highcharts.js"></script>
   <script src="recursos/highcharts/js/highcharts-more.js"></script>
   <script src="recursos/highcharts/js/modules/solid-gauge.js"></script>
   <script src="recursos/highcharts/js/modules/exporting.js"></script>
   <script src="recursos/jQuery-switchButton/jquery.switchButton.js"></script>
-  
-  <script type="text/javascript"> 
-    
+
+  <script type="text/javascript">
+
     $(document).ready(function(){
-      
+
       /* Menu activo */
       $('ul.bs-sidenav > li').click(function (e) {
          // e.preventDefault();
           $('ul.bs-sidenav > li').removeClass('active');
-          $(this).addClass('active');                
-      }); 
+          $(this).addClass('active');
+      });
 
       jQuery(function($){
               $.datepicker.regional['es'] = {
@@ -95,7 +95,7 @@ require "recursos/zhi/auth.php";
                       showMonthAfterYear: false,
                       yearSuffix: ''};
               $.datepicker.setDefaults($.datepicker.regional['es']);
-      });     
+      });
 
         $(".btn-select").each(function (e) {
             var value = $(this).find("ul li.selected").html();

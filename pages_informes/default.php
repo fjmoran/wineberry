@@ -15,7 +15,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
         <div class="col-md-1"></div>
         <div class="col-md-4">
         <div class="small-box bg-aqua">
-            <div class="inner">
+            <div class="inner" id="humedad_ambiente">
                 <h3>74%</h3>
                 <p>Humedad</p>
             </div>
@@ -29,7 +29,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
         <div class="col-md-2"></div>
         <div class="col-md-4">
         <div class="small-box bg-yellow">
-            <div class="inner">
+            <div class="inner" id="TemperaturaAmbiente>
                 <h3>24ºC</h3>
                 <p>Temperatura</p>
             </div>

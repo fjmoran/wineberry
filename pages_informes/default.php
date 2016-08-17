@@ -27,10 +27,10 @@ include_once "../recursos/zhi/CreaConnv2.php";
         <h6 class="text-center">Fecha última medición: Hace 3 minutos</h6>
         </div>
         <div class="col-md-2"></div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="TemperaturaAmbiente">
         <div class="small-box bg-yellow">
-            <div class="inner" id="TemperaturaAmbiente>
-                <h3>24ºC</h3>
+            <div class="inner" id="Temperatura">
+                <h3>Local</h3>
                 <p>Temperatura</p>
             </div>
             <div class="icon">
@@ -47,7 +47,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
  			<h4>Temperatura Cubas</h4>
  		</div>
         <div class="col-md-3">
-            <div class="info-box bg-green">
+            <div class="info-box bg-green" id="CUBA1">
                 <span class="info-box-icon"><i class="fa fa-check"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text" onclick="$('#cuerpo').load('pages_informes/tempcuba1.php');"><a href="#inf_tempamb"><i class="fa fa-info-circle"></i> Cuba Nº1</a></span>
@@ -62,7 +62,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
             </div>
         </div>
         <div class="col-md-3">
-            <div class="info-box bg-green">
+            <div class="info-box bg-green" id="CUBA2">
                 <span class="info-box-icon"><i class="fa fa-check"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text" onclick="$('#cuerpo').load('pages_informes/tempcuba2.php');"><a href="#inf_tempamb"><i class="fa fa-info-circle"></i> Cuba Nº2</a></span>
@@ -112,3 +112,16 @@ include_once "../recursos/zhi/CreaConnv2.php";
 </div>
 <div class="col-md-1"></div>
 <!-- col-md -->
+<script type="text/javascript">
+var auto_refresh = setInterval(
+function ()
+{
+$('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE').fadeIn("slow");
+$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA').fadeIn("slow");
+}, 10000);	
+	
+$(document).ready(function(){
+$('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE');
+$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA');
+});
+</script>	

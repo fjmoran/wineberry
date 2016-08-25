@@ -1,6 +1,35 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include_once "../recursos/zhi/CreaConnv2.php";
+
+$query = "select DatosTemp_c, UNIX_TIMESTAMP(DatosDateTime) as fecha from Datos  WHERE DatosDateTime >= DATE_SUB(NOW(), INTERVAL 1 HOUR) ORDER BY DatosDateTime ASC";
+$results = $data_mysqli->query($query);
+if ($results) {
+	$serie = "[";
+	$categoria = "[";
+	$contador = 0;
+
+	while ($row = $results->fetch_array(MYSQLI_NUM)){
+		if ($row[0] < 125){ 
+			/*$timestamp = $row[1];
+			$splitTimeStamp = explode(" ",$timestamp);
+			list($año,$mes,$dia) = explode("-",$splitTimeStamp[0]);
+			list($hora,$minuto,$segundo) = explode(":",$splitTimeStamp[1]);
+			$mes = intval($mes) - 1;
+			$hora = intval($hora);
+			$minuto = intval($minuto);
+			$segundo = intval($segundo); */
+			$serie .="[$row[1],$row[0]],";
+			$categoria .= "$row[0],";
+		}
+	} 
+	$serie = substr($serie,0,-1)."]";
+	$categoria = substr($categoria,0,-1)."]";
+	$results->free();	
+}
 
 ?>
 

@@ -3,7 +3,7 @@
 	<h2>Gráfico temperatura en cuba #1</h2>
         <div class="row">
             <div class="col-md-8">
-                
+
             </div>
             <div class="col-md-4">
                 <a class="btn btn-default btn-select">
@@ -16,9 +16,9 @@
                         <li>Cuba 3</li>
                         <li>Cuba 4</li>
                     </ul>
-                </a>                 
+                </a>
             </div>
-        </div>   
+        </div>
 	<div class="graph-report" id="grafico_cuba">
 	</div>
 <div class="col-md-1"></div> </br>
@@ -32,11 +32,11 @@
                     <span class="info-box-number"></span></br></span>
                     <label>
                         <input type="checkbox" name="rf-switch-1" class="boton_x">
-                    </label>           
+                    </label>
                 </div><!-- /.info-box-content -->
             </div>
         </div>
-        <div class="col-md-4">  
+        <div class="col-md-4">
              <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fa fa-plus"></i></span>
                 <div class="info-box-content">
@@ -44,12 +44,12 @@
                     <span class="info-box-number"></span></br></span>
                     <label>
                         <input type="checkbox" name="rf-switch-1" class="boton_x">
-                    </label>           
+                    </label>
                 </div><!-- /.info-box-content -->
-            </div>    
-        </div> 
-        <div class="col-md-4">  
-            <h4>Parámetros:</h4> 
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Parámetros:</h4>
             <form>
               <div class="form-group">
                 <label for="obj_temp">Temperatura objetivo (Cº)</label>
@@ -60,10 +60,10 @@
                 <input type="text" class="form-control" id="tolerancia_temp" placeholder="" value="5" disabled>
               </div>
               <button type="button" class="btn btn-primary pull-right"  data-toggle="modal" data-target="#editarTemp">Editar</button>
-            </form>  
-        </div>               
-    </div> 
-</div>       	
+            </form>
+        </div>
+    </div>
+</div>
 </div><!-- col-md -->
 <!-- Modal -->
 <div class="modal fade" id="editarTemp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -83,7 +83,7 @@
                 <label for="tolerancia_temp_edit">Tolerancia (Cº)</label>
                 <input type="text" class="form-control" id="tolerancia_temp_edit" placeholder="" value="5">
               </div>
-            </form> 
+            </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -102,9 +102,9 @@ $(function () {
     	credits: {
       		enabled: false
   		},
-        exporting: { 
-            enabled: false 
-        },         
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline'
         },
@@ -127,7 +127,7 @@ $(function () {
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
-            plotBands: [{ 
+            plotBands: [{
                 from: 0.0,
                 to: 10,
                 color: 'rgba(68, 170, 213, 0.1)',
@@ -173,17 +173,55 @@ $(function () {
                 marker: {
                     enabled: false
                 },
-                pointInterval: 3600000, // one hour
-                pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+              //  pointInterval: 3600000, // one hour
+              //  pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
             }
         },
         series: [{
             name: 'tº Interna',
-            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
+            data: [
+                [Date.UTC(1970, 9, 21), 0],
+                [Date.UTC(1970, 10, 4), 0.28],
+                [Date.UTC(1970, 10, 9), 0.25],
+                [Date.UTC(1970, 10, 27), 0.2],
+                [Date.UTC(1970, 11, 2), 0.28],
+                [Date.UTC(1970, 11, 26), 0.28],
+                [Date.UTC(1970, 11, 29), 0.47],
+                [Date.UTC(1971, 0, 11), 0.79],
+                [Date.UTC(1971, 0, 26), 0.72],
+                [Date.UTC(1971, 1, 3), 1.02],
+                [Date.UTC(1971, 1, 11), 1.12],
+                [Date.UTC(1971, 1, 25), 1.2],
+                [Date.UTC(1971, 2, 11), 1.18],
+                [Date.UTC(1971, 3, 11), 1.19],
+                [Date.UTC(1971, 4, 1), 1.85],
+                [Date.UTC(1971, 4, 5), 2.22],
+                [Date.UTC(1971, 4, 19), 1.15],
+                [Date.UTC(1971, 5, 3), 0]
+            ]
 
         }, {
             name: 'tº Externa',
-            data: [4, 4, 4.6, 4.9, 4.8, 4.2, 5, 5, 5, 5.1, 5.6, 5.7, 5.8, 5.6, 5.2, 5, 5.1, 5.3, 5.3, 5, 5.1, 5, 5, 5, 5.2, 5.1, 5, 5.3, 5, 5.1, 5.2, 5.1, 5.3, 5.3, 5, 8.1, 8.1, 7.5, 6.5, 6.9, 8.1, 6, 7.3, 6.9, 6.2, 5.7, 6.3, 5.4, 5.3]
+            data: [
+                [Date.UTC(1970, 9, 21), 0],
+                [Date.UTC(1970, 10, 4), 0.38],
+                [Date.UTC(1970, 10, 9), 0.35],
+                [Date.UTC(1970, 10, 27), 0.3],
+                [Date.UTC(1970, 11, 2), 0.38],
+                [Date.UTC(1970, 11, 26), 0.38],
+                [Date.UTC(1970, 11, 29), 0.57],
+                [Date.UTC(1971, 0, 11), 0.89],
+                [Date.UTC(1971, 0, 26), 0.82],
+                [Date.UTC(1971, 1, 3), 1.12],
+                [Date.UTC(1971, 1, 11), 1.22],
+                [Date.UTC(1971, 1, 25), 1.3],
+                [Date.UTC(1971, 2, 11), 1.28],
+                [Date.UTC(1971, 3, 11), 1.29],
+                [Date.UTC(1971, 4, 1), 1.95],
+                [Date.UTC(1971, 4, 5), 2.32],
+                [Date.UTC(1971, 4, 19), 1.25],
+                [Date.UTC(1971, 5, 3), 0]
+            ]
         }],
         navigation: {
             menuItemStyle: {

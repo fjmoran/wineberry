@@ -13,7 +13,7 @@ if ($results) {
 	$contador = 0;
 
 	while ($row = $results->fetch_array(MYSQLI_NUM)){
-		if ($row[0] < 125){ 
+		if ($row[0] < 125){
 			/*$timestamp = $row[1];
 			$splitTimeStamp = explode(" ",$timestamp);
 			list($año,$mes,$dia) = explode("-",$splitTimeStamp[0]);
@@ -25,10 +25,10 @@ if ($results) {
 			$serie .="[$row[1],$row[0]],";
 			$categoria .= "$row[0],";
 		}
-	} 
+	}
 	$serie = substr($serie,0,-1)."]";
 	$categoria = substr($categoria,0,-1)."]";
-	$results->free();	
+	$results->free();
 }
 
 ?>
@@ -39,8 +39,8 @@ if ($results) {
 	<div class="graph-report" id="grafico_temp">
 	</div> </br>
     <div class="graph-report" id="grafico_hum">
-    </div> </br>   
-<div class="col-md-1"></div>	
+    </div> </br>
+<div class="col-md-1"></div>
 </div><!-- col-md -->
 
 <script type="text/javascript">
@@ -49,9 +49,9 @@ $(function () {
         credits: {
             enabled: false
         },
-        exporting: { 
-            enabled: false 
-        },         
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline'
         },
@@ -89,14 +89,33 @@ $(function () {
                 marker: {
                     enabled: false
                 },
-                pointInterval: 3600000, // one hour
-                pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+              //  pointInterval: 3600000, 
+              //  pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
             }
         },
         series: [{
             name: 'tº',
             color: '#00FF00',
-            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
+            data: [
+                [Date.UTC(1970, 9, 21), 0],
+                [Date.UTC(1970, 10, 4), 0.28],
+                [Date.UTC(1970, 10, 9), 0.25],
+                [Date.UTC(1970, 10, 27), 0.2],
+                [Date.UTC(1970, 11, 2), 0.28],
+                [Date.UTC(1970, 11, 26), 0.28],
+                [Date.UTC(1970, 11, 29), 0.47],
+                [Date.UTC(1971, 0, 11), 0.79],
+                [Date.UTC(1971, 0, 26), 0.72],
+                [Date.UTC(1971, 1, 3), 1.02],
+                [Date.UTC(1971, 1, 11), 1.12],
+                [Date.UTC(1971, 1, 25), 1.2],
+                [Date.UTC(1971, 2, 11), 1.18],
+                [Date.UTC(1971, 3, 11), 1.19],
+                [Date.UTC(1971, 4, 1), 1.85],
+                [Date.UTC(1971, 4, 5), 2.22],
+                [Date.UTC(1971, 4, 19), 1.15],
+                [Date.UTC(1971, 5, 3), 0]
+            ]
 
         }],
         navigation: {
@@ -112,9 +131,9 @@ $(function () {
         credits: {
             enabled: false
         },
-        exporting: { 
-            enabled: false 
-        },         
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline'
         },
@@ -152,13 +171,32 @@ $(function () {
                 marker: {
                     enabled: false
                 },
-                pointInterval: 3600000, // one hour
-                pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+              //  pointInterval: 3600000,
+              //  pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
             }
         },
         series: [{
             name: '%',
-            data: [7.2, 7.8, 7.8, 7.8, 7, 6.3, 6.5, 7.9, 6.9, 7.6, 6.6, 8, 9, 8.6, 9.5, 9.2, 9.5, 9.5, 9, 8.1, 7.7, 9, 7.7, 7.3, 7.3, 9.1, 12.7, 12.1, 10.6, 11.1, 10.8, 13.6, 12.2, 14, 15.9, 16.5, 16.6, 16.1, 18, 25.3, 15.7, 14.4, 14.8, 14.6, 14.8, 14.5, 13.5, 12.4, 12.6]
+            data: [
+                [Date.UTC(1970, 9, 21), 0],
+                [Date.UTC(1970, 10, 4), 0.28],
+                [Date.UTC(1970, 10, 9), 0.25],
+                [Date.UTC(1970, 10, 27), 0.2],
+                [Date.UTC(1970, 11, 2), 0.28],
+                [Date.UTC(1970, 11, 26), 0.28],
+                [Date.UTC(1970, 11, 29), 0.47],
+                [Date.UTC(1971, 0, 11), 0.79],
+                [Date.UTC(1971, 0, 26), 0.72],
+                [Date.UTC(1971, 1, 3), 1.02],
+                [Date.UTC(1971, 1, 11), 1.12],
+                [Date.UTC(1971, 1, 25), 1.2],
+                [Date.UTC(1971, 2, 11), 1.18],
+                [Date.UTC(1971, 3, 11), 1.19],
+                [Date.UTC(1971, 4, 1), 1.85],
+                [Date.UTC(1971, 4, 5), 2.22],
+                [Date.UTC(1971, 4, 19), 1.15],
+                [Date.UTC(1971, 5, 3), 0]
+            ]
 
         }],
         navigation: {

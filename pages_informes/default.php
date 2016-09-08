@@ -118,10 +118,10 @@ function ()
 {
 $('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE').fadeIn("slow");
 $('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA').fadeIn("slow");
-}, 10000);	
-	
+}, 10000);
+
 $(document).ready(function(){
 $('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE');
 $('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA');
 });
-</script>	
+</script>

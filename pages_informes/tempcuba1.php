@@ -1,3 +1,10 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once "../recursos/zhi/CreaConnv2.php";
+?>
 <div class="col-md-1"></div>
 <div class="col-md-10">
 	<h2>Gráfico temperatura en cuba #1</h2>
@@ -180,29 +187,64 @@ $(function () {
         series: [{
             name: 'tº Interna',
             data: [
-                [Date.UTC(1970, 9, 21), 0],
-                [Date.UTC(1970, 10, 4), 0.28],
-                [Date.UTC(1970, 10, 9), 0.25],
-                [Date.UTC(1970, 10, 27), 0.2],
-                [Date.UTC(1970, 11, 2), 0.28],
-                [Date.UTC(1970, 11, 26), 0.28],
-                [Date.UTC(1970, 11, 29), 0.47],
-                [Date.UTC(1971, 0, 11), 0.79],
-                [Date.UTC(1971, 0, 26), 0.72],
-                [Date.UTC(1971, 1, 3), 1.02],
-                [Date.UTC(1971, 1, 11), 1.12],
-                [Date.UTC(1971, 1, 25), 1.2],
-                [Date.UTC(1971, 2, 11), 1.18],
-                [Date.UTC(1971, 3, 11), 1.19],
-                [Date.UTC(1971, 4, 1), 1.85],
-                [Date.UTC(1971, 4, 5), 2.22],
-                [Date.UTC(1971, 4, 19), 1.15],
-                [Date.UTC(1971, 5, 3), 0]
+<?php 
+            
+$query = "SELECT concat_ws(',',date_format(DatosDateTime,'[Date.UTC(%Y,%m,%e,%I,%i)'), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
+FROM Data_WineBerry.Datos 
+WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+GROUP BY unix_timestamp(DatosDateTime) DIV 300";
+
+$results = $data_mysqli->query($query);
+$serie = "";
+
+if ($results) {
+	$contador = $results->num_rows;
+	while ($row = $results->fetch_row()){	
+		if ($contador != 1)
+		echo $row[0].",";
+		else 
+		echo $row[0];
+		$contador --;
+	}
+	$serie = substr($serie,0,-1)."";
+	$results->free();
+}
+
+echo $serie;
+?>
             ]
 
         }, {
             name: 'tº Externa',
             data: [
+<?php 
+            
+$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
+FROM Data_WineBerry.Datos 
+WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+GROUP BY unix_timestamp(DatosDateTime) DIV 300";
+
+
+$results = $data_mysqli->query($query);
+$serie = "";
+
+if ($results) {
+	$contador = $results->num_rows;
+	while ($row = $results->fetch_row()){	
+		if ($contador != 1)
+		echo $row[0].",";
+		else 
+		echo $row[0];
+		$contador --;
+	}
+	$serie = substr($serie,0,-1)."";
+	$results->free();
+}
+
+echo $serie;
+
+?>
+/*
                 [Date.UTC(1970, 9, 21), 0],
                 [Date.UTC(1970, 10, 4), 0.38],
                 [Date.UTC(1970, 10, 9), 0.35],
@@ -220,7 +262,7 @@ $(function () {
                 [Date.UTC(1971, 4, 1), 1.95],
                 [Date.UTC(1971, 4, 5), 2.32],
                 [Date.UTC(1971, 4, 19), 1.25],
-                [Date.UTC(1971, 5, 3), 0]
+                [Date.UTC(1971, 5, 3), 0] */
             ]
         }],
         navigation: {

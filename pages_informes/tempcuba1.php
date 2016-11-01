@@ -38,7 +38,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
                     <span class="info-box-text">Control de frio</span>
                     <span class="info-box-number"></span></br></span>
                     <label>
-                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                        <input type="checkbox" name="rf-switch-frio" id="rf-switch-frio" class="boton_x">
                     </label>
                 </div><!-- /.info-box-content -->
             </div>
@@ -50,7 +50,7 @@ include_once "../recursos/zhi/CreaConnv2.php";
                     <span class="info-box-text">Control de calor</span>
                     <span class="info-box-number"></span></br></span>
                     <label>
-                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                        <input type="checkbox" name="rf-switch-calor" id="rf-switch-calor" class="boton_x">
                     </label>
                 </div><!-- /.info-box-content -->
             </div>
@@ -275,4 +275,38 @@ echo $serie;
 
 $("input[class=boton_x]").switchButton({
  })
+</script>
+
+<script type="text/javascript">
+	$("#rf-switch-frio").change( function() {
+		myUrl = "https://727c627a.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
+if ($("#rf-switch-frio").is(":checked")) {
+	alert("checked");	
+	$.get(myUrl);
+
+    // checkbox is checked 
+} else {
+	alert("unchecked");
+	$.get(myUrl);
+    // checkbox is not checked 
+}
+});
+
+</script>
+
+<script type="text/javascript">
+	$("#rf-switch-calor").change( function() {
+		myUrl = "https://727c627a.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
+if ($("#rf-switch-calor").is(":checked")) {
+	alert("checked");	
+	$.get(myUrl);
+
+    // checkbox is checked 
+} else {
+	alert("unchecked");
+	$.get(myUrl);
+    // checkbox is not checked 
+}
+});
+
 </script>

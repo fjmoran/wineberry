@@ -189,7 +189,7 @@ $(function () {
             data: [
 <?php 
             
-$query = "SELECT concat_ws(',',date_format(DatosDateTime,'[Date.UTC(%Y,%m,%e,%I,%i)'), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
+$query = "SELECT concat_ws(',',UNIX_TIMESTAMP(DatosDateTime), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
 FROM Data_WineBerry.Datos 
 WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";

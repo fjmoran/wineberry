@@ -43,10 +43,10 @@ include_once "../recursos/zhi/CreaConnv2.php";
                 </div><!-- /.info-box-content -->
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" >
              <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fa fa-plus"></i></span>
-                <div class="info-box-content">
+                <div class="info-box-content" id="switch-calor">
                     <span class="info-box-text">Control de calor</span>
                     <span class="info-box-number"></span></br></span>
                     <label>
@@ -192,7 +192,7 @@ $(function () {
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,'[Date.UTC(%Y,%m,%e,%I,%i)'), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
 FROM Data_WineBerry.Datos 
 WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
-GROUP BY unix_timestamp(DatosDateTime) DIV 300";
+GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 $results = $data_mysqli->query($query);
 $serie = "";
@@ -222,7 +222,7 @@ echo $serie;
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
 FROM Data_WineBerry.Datos 
 WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
-GROUP BY unix_timestamp(DatosDateTime) DIV 300";
+GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 
 $results = $data_mysqli->query($query);
@@ -279,10 +279,11 @@ $("input[class=boton_x]").switchButton({
 
 <script type="text/javascript">
 	$("#rf-switch-frio").change( function() {
-		myUrl = "https://727c627a.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
 if ($("#rf-switch-frio").is(":checked")) {
 	alert("checked");	
 	$.get(myUrl);
+
 
     // checkbox is checked 
 } else {
@@ -296,7 +297,7 @@ if ($("#rf-switch-frio").is(":checked")) {
 
 <script type="text/javascript">
 	$("#rf-switch-calor").change( function() {
-		myUrl = "https://727c627a.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
 if ($("#rf-switch-calor").is(":checked")) {
 	alert("checked");	
 	$.get(myUrl);

@@ -400,3 +400,9 @@ padding-right: 15px;
   background-color: #a4a4a4 !important;
   color: #fff !important;   
 }
+.div-no-click { 
+	pointer-events: none; 
+}
+.div-si-click { 
+	pointer-events: auto; 
+}

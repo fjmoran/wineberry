@@ -281,13 +281,13 @@ $("input[class=boton_x]").switchButton({
 	$("#rf-switch-frio").change( function() {
 		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
 if ($("#rf-switch-frio").is(":checked")) {
-	alert("checked");	
+	//alert("checked");	
 	$.get(myUrl);
 
 
     // checkbox is checked 
 } else {
-	alert("unchecked");
+	//alert("unchecked");
 	$.get(myUrl);
     // checkbox is not checked 
 }

@@ -4,7 +4,7 @@ require "../recursos/zhi/CreaConnv2.php";
 
 $RASPBERRY = "";
 $DEVICE = "";
- echo "en lectura_temp";
+
 if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
 	$RASPBERRY = $_GET['RASPBERRY'];
 }
@@ -16,14 +16,7 @@ if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
 
 $POSICION = $_GET['POSICION'];
 
-$query = "select DatosTemp_c, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF FROM Datos";
-
-if (!(empty($DEVICE)) {
-echo "DEVICE = $DEVICE";
-	$query .= " WHERE DatosDevId = '$DEVICE'";
-} 
-
-$query .= " ORDER BY DatosDateTime DESC LIMIT 1";
+$query = "select DatosTemp_c, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF FROM Datos ORDER BY DatosDateTime DESC LIMIT 1";
 
 $results = $data_mysqli->query($query);
 if ($results) {

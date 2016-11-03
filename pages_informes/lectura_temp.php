@@ -15,7 +15,13 @@ if ((isset($_POST['DEVICE'])) && (!empty($_POST['DEVICE']))){
 
 $POSICION = $_GET['POSICION'];
 
-$query = "select DatosTemp_c, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF from Datos ORDER BY DatosDateTime DESC LIMIT 1";
+$query = "select DatosTemp_c, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF FROM Datos";
+
+if (!(empty($DEVICE)) {
+	$query .= " WHERE DatosDevId = '$DEVICE'";
+} 
+
+$query = " ORDER BY DatosDateTime DESC LIMIT 1";
 
 $results = $data_mysqli->query($query);
 if ($results) {

@@ -1,6 +1,13 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include_once "../recursos/zhi/CreaConnv2.php";
+?>
 <div class="col-md-1"></div>
 <div class="col-md-10">
-    <h2>Gráfico temperatura en cuba #2</h2>
+	<h2>Gráfico temperatura en cuba #1</h2>
         <div class="row">
             <div class="col-md-8">
 
@@ -11,16 +18,16 @@
                     <span class="btn-select-value">Seleccione un item</span>
                     <span class='btn-select-arrow glyphicon glyphicon-chevron-down'></span>
                     <ul>
-                        <li>Cuba 1</li>
-                        <li class="selected">Cuba 2</li>
+                        <li class="selected">Cuba 1</li>
+                        <li>Cuba 2</li>
                         <li>Cuba 3</li>
                         <li>Cuba 4</li>
                     </ul>
                 </a>
             </div>
         </div>
-    <div class="graph-report" id="grafico_cuba">
-    </div>
+	<div class="graph-report" id="grafico_cuba">
+	</div>
 <div class="col-md-1"></div> </br>
 <div class="col-md-12">
     <div class="row bs-sidenav">
@@ -31,19 +38,19 @@
                     <span class="info-box-text">Control de frio</span>
                     <span class="info-box-number"></span></br></span>
                     <label>
-                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                        <input type="checkbox" name="rf-switch-frio" id="rf-switch-frio" class="boton_x">
                     </label>
                 </div><!-- /.info-box-content -->
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" >
              <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fa fa-plus"></i></span>
-                <div class="info-box-content">
+                <div class="info-box-content" id="switch-calor">
                     <span class="info-box-text">Control de calor</span>
                     <span class="info-box-number"></span></br></span>
                     <label>
-                        <input type="checkbox" name="rf-switch-1" class="boton_x">
+                        <input type="checkbox" name="rf-switch-calor" id="rf-switch-calor" class="boton_x">
                     </label>
                 </div><!-- /.info-box-content -->
             </div>
@@ -99,9 +106,9 @@
 <script type="text/javascript">
 $(function () {
     $('#grafico_cuba').highcharts({
-        credits: {
-            enabled: false
-        },
+    	credits: {
+      		enabled: false
+  		},
         exporting: {
             enabled: false
         },
@@ -180,46 +187,82 @@ $(function () {
         series: [{
             name: 'tº Interna',
             data: [
-                [Date.UTC(1970, 9, 21), 0],
-                [Date.UTC(1970, 10, 4), 0.28],
-                [Date.UTC(1970, 10, 9), 0.25],
-                [Date.UTC(1970, 10, 27), 0.2],
-                [Date.UTC(1970, 11, 2), 0.28],
-                [Date.UTC(1970, 11, 26), 0.28],
-                [Date.UTC(1970, 11, 29), 0.47],
-                [Date.UTC(1971, 0, 11), 0.79],
-                [Date.UTC(1971, 0, 26), 0.72],
-                [Date.UTC(1971, 1, 3), 1.02],
-                [Date.UTC(1971, 1, 11), 1.12],
-                [Date.UTC(1971, 1, 25), 1.2],
-                [Date.UTC(1971, 2, 11), 1.18],
-                [Date.UTC(1971, 3, 11), 1.19],
-                [Date.UTC(1971, 4, 1), 1.85],
-                [Date.UTC(1971, 4, 5), 2.22],
-                [Date.UTC(1971, 4, 19), 1.15],
-                [Date.UTC(1971, 5, 3), 0]
+<?php 
+            
+$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
+FROM Data_WineBerry.Datos 
+WHERE DatosDevId = '28-0115649829ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+GROUP BY unix_timestamp(DatosDateTime) DIV 60";
+
+$results = $data_mysqli->query($query);
+$serie = "";
+
+if ($results) {
+	$contador = $results->num_rows;
+	while ($row = $results->fetch_row()){	
+		if ($contador != 1)
+		echo $row[0].",";
+		else 
+		echo $row[0];
+		$contador --;
+	}
+	$serie = substr($serie,0,-1)."";
+	$results->free();
+}
+
+echo $serie;
+?>
             ]
+
         }, {
             name: 'tº Externa',
             data: [
+<?php 
+            
+$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
+FROM Data_WineBerry.Datos 
+WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+GROUP BY unix_timestamp(DatosDateTime) DIV 60";
+
+
+$results = $data_mysqli->query($query);
+$serie = "";
+
+if ($results) {
+	$contador = $results->num_rows;
+	while ($row = $results->fetch_row()){	
+		if ($contador != 1)
+		echo $row[0].",";
+		else 
+		echo $row[0];
+		$contador --;
+	}
+	$serie = substr($serie,0,-1)."";
+	$results->free();
+}
+
+echo $serie;
+
+?>
+/*
                 [Date.UTC(1970, 9, 21), 0],
-                [Date.UTC(1970, 10, 4), 21.28],
-                [Date.UTC(1970, 10, 9), 21.25],
-                [Date.UTC(1970, 10, 27), 21.2],
-                [Date.UTC(1970, 11, 2), 21.28],
-                [Date.UTC(1970, 11, 26), 21.28],
-                [Date.UTC(1970, 11, 29), 21.47],
-                [Date.UTC(1971, 0, 11), 21.79],
-                [Date.UTC(1971, 0, 26), 21.72],
-                [Date.UTC(1971, 1, 3), 22.02],
-                [Date.UTC(1971, 1, 11), 22.12],
-                [Date.UTC(1971, 1, 25), 22.2],
-                [Date.UTC(1971, 2, 11), 22.18],
-                [Date.UTC(1971, 3, 11), 22.19],
-                [Date.UTC(1971, 4, 1), 22.85],
-                [Date.UTC(1971, 4, 5), 23.22],
-                [Date.UTC(1971, 4, 19), 22.15],
-                [Date.UTC(1971, 5, 3), 0]
+                [Date.UTC(1970, 10, 4), 0.38],
+                [Date.UTC(1970, 10, 9), 0.35],
+                [Date.UTC(1970, 10, 27), 0.3],
+                [Date.UTC(1970, 11, 2), 0.38],
+                [Date.UTC(1970, 11, 26), 0.38],
+                [Date.UTC(1970, 11, 29), 0.57],
+                [Date.UTC(1971, 0, 11), 0.89],
+                [Date.UTC(1971, 0, 26), 0.82],
+                [Date.UTC(1971, 1, 3), 1.12],
+                [Date.UTC(1971, 1, 11), 1.22],
+                [Date.UTC(1971, 1, 25), 1.3],
+                [Date.UTC(1971, 2, 11), 1.28],
+                [Date.UTC(1971, 3, 11), 1.29],
+                [Date.UTC(1971, 4, 1), 1.95],
+                [Date.UTC(1971, 4, 5), 2.32],
+                [Date.UTC(1971, 4, 19), 1.25],
+                [Date.UTC(1971, 5, 3), 0] */
             ]
         }],
         navigation: {
@@ -232,4 +275,39 @@ $(function () {
 
 $("input[class=boton_x]").switchButton({
  })
+</script>
+
+<script type="text/javascript">
+	$("#rf-switch-frio").change( function() {
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
+if ($("#rf-switch-frio").is(":checked")) {
+	//alert("checked");	
+	$.get(myUrl);
+
+
+    // checkbox is checked 
+} else {
+	//alert("unchecked");
+	$.get(myUrl);
+    // checkbox is not checked 
+}
+});
+
+</script>
+
+<script type="text/javascript">
+	$("#rf-switch-calor").change( function() {
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
+if ($("#rf-switch-calor").is(":checked")) {
+	alert("checked");	
+	$.get(myUrl);
+
+    // checkbox is checked 
+} else {
+	alert("unchecked");
+	$.get(myUrl);
+    // checkbox is not checked 
+}
+});
+
 </script>

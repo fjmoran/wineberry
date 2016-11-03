@@ -9,8 +9,8 @@ if ((isset($_POST['RASPBERRY'])) && (!empty($_POST['RASPBERRY']))){
 	$RASPBERRY = $_POST['RASPBERRY'];
 }
 
-if ((isset($_POST['DEVICE'])) && (!empty($_POST['DEVICE']))){
-	$DEVICE = $_POST['DEVICE'];
+if ((isset($_GET['DEVICE'])) && (!empty($_POST['DEVICE']))){
+	$DEVICE = $_GET['DEVICE'];
 }
 
 $POSICION = $_GET['POSICION'];

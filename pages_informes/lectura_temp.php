@@ -11,6 +11,7 @@ if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
 
 if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
 	$DEVICE = $_GET['DEVICE'];
+	echo "DEVICE = $DEVICE";
 }
 
 $POSICION = $_GET['POSICION'];
@@ -18,6 +19,7 @@ $POSICION = $_GET['POSICION'];
 $query = "select DatosTemp_c, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF FROM Datos";
 
 if (!(empty($DEVICE)) {
+echo "DEVICE = $DEVICE";
 	$query .= " WHERE DatosDevId = '$DEVICE'";
 } 
 

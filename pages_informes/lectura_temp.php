@@ -45,7 +45,7 @@ if ($results) {
 		echo "
                 <span class=\"info-box-icon\"><i class=\"fa fa-check\"></i></span>
                 <div class=\"info-box-content\">
-                    <span class=\"info-box-text\" onclick=\"$('#cuerpo').load('pages_informes/tempcuba1.php');\"><a href=\"#inf_tempamb\"><i class=\"fa fa-info-circle\"></i> Cuba Nº1</a></span>
+                    <span class=\"info-box-text\" onclick=\"$('#cuerpo').load('pages_informes/tempcuba1.php');\"><a href=\"#inf_tempamb\"><i class=\"fa fa-info-circle\"></i> Cuba $DEVICE</a></span>
                     <span class=\"info-box-number\">$row[0]ºC</span>
                     <div class=\"progress\">
                         <div class=\"progress-bar\" style=\"width: 30%\"></div>

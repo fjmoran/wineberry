@@ -191,7 +191,7 @@ $(function () {
             
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
 FROM Data_WineBerry.Datos 
-WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 $results = $data_mysqli->query($query);
@@ -221,7 +221,7 @@ echo $serie;
             
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
 FROM Data_WineBerry.Datos 
-WHERE DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 

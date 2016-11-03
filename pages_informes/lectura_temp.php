@@ -4,7 +4,7 @@ require "../recursos/zhi/CreaConnv2.php";
 
 $RASPBERRY = "";
 $DEVICE = "";
-
+ echo "en lectura_temp";
 if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
 	$RASPBERRY = $_GET['RASPBERRY'];
 }

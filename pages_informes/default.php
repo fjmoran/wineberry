@@ -116,14 +116,14 @@ include_once "../recursos/zhi/CreaConnv2.php";
 var auto_refresh = setInterval(
 function ()
 {
-$('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE');
-$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-011564b535ff');
-$('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-0115649829ff');
-});
+$('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE').fadeIn("slow");
+$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-011564b535ff').fadeIn("slow");
+$('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-0115649829ff').fadeIn("slow");
+}, 10000);
 
 $(document).ready(function(){
 $('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE');
-$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA?DEVICE=28-011564b535ff');
-$('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA?DEVICE=28-0115649829ff');
+$('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA');
+$('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA');
 });
 </script>

@@ -11,7 +11,7 @@ if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
 
 if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
 	$DEVICE = $_GET['DEVICE'];
-	echo "DEVICE = $DEVICE";
+	//echo "DEVICE = $DEVICE";
 }
 
 $POSICION = $_GET['POSICION'];

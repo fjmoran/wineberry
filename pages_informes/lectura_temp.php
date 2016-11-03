@@ -5,11 +5,11 @@ require "../recursos/zhi/CreaConnv2.php";
 $RASPBERRY = "";
 $DEVICE = "";
 
-if ((isset($_POST['RASPBERRY'])) && (!empty($_POST['RASPBERRY']))){
-	$RASPBERRY = $_POST['RASPBERRY'];
+if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
+	$RASPBERRY = $_GET['RASPBERRY'];
 }
 
-if ((isset($_GET['DEVICE'])) && (!empty($_POST['DEVICE']))){
+if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
 	$DEVICE = $_GET['DEVICE'];
 }
 

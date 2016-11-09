@@ -105,171 +105,79 @@ include_once "../recursos/zhi/CreaConnv2.php";
 
 <script type="text/javascript">
 $(function () {
-    $('#grafico_cuba').highcharts({
-    	credits: {
-      		enabled: false
-  		},
-        exporting: {
-            enabled: false
-        },
-        chart: {
-            type: 'spline'
-        },
-        title: {
-            text: ''
-        },
-        subtitle: {
-            text: ''
-        },
-        xAxis: {
-            type: 'datetime',
-            labels: {
-                overflow: 'justify'
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
             }
-        },
-        yAxis: {
-            title: {
-                text: 'Temperatura (ºC)'
+        });
+
+        $('#grafico_cuba').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = Math.random();
+                            series.addPoint([x, y], true, true);
+                        }, 1000);
+                    }
+                }
             },
-            minorGridLineWidth: 0,
-            gridLineWidth: 0,
-            alternateGridColor: null,
-            plotBands: [{
-                from: 0.0,
-                to: 10,
-                color: 'rgba(68, 170, 213, 0.1)',
-                label: {
-                    text: 'Banda Inferior',
-                    style: {
-                        color: '#606060'
-                    }
+            title: {
+                text: 'Live random data'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
                 }
-            }, { // Light breeze
-                from: 10.1,
-                to: 20,
-                color: 'rgba(0, 0, 0, 0)',
-                label: {
-                    text: 'Normal',
-                    style: {
-                        color: '#606060'
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Random data',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()
+                        });
                     }
-                }
-            }, { // Gentle breeze
-                from: 20.1,
-                to: 80,
-                color: 'rgba(255, 17, 17, 0.1)',
-                label: {
-                    text: 'Banda Superior',
-                    style: {
-                        color: '#606060'
-                    }
-                }
+                    return data;
+                }())
             }]
-        },
-        tooltip: {
-            valueSuffix: ' ºC'
-        },
-        plotOptions: {
-            spline: {
-                lineWidth: 4,
-                states: {
-                    hover: {
-                        lineWidth: 5
-                    }
-                },
-                marker: {
-                    enabled: false
-                },
-              //  pointInterval: 3600000, // one hour
-              //  pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
-            }
-        },
-        series: [{
-            name: 'tº Interna',
-            data: [
-<?php 
-            
-$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
-FROM Data_WineBerry.Datos 
-WHERE DatosDevId = '28-0115649829ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
-GROUP BY unix_timestamp(DatosDateTime) DIV 60";
-
-$results = $data_mysqli->query($query);
-$serie = "";
-
-if ($results) {
-	$contador = $results->num_rows;
-	while ($row = $results->fetch_row()){	
-		if ($contador != 1)
-		echo $row[0].",";
-		else 
-		echo $row[0];
-		$contador --;
-	}
-	$serie = substr($serie,0,-1)."";
-	$results->free();
-}
-
-echo $serie;
-?>
-            ]
-
-        }, {
-            name: 'tº Externa',
-            data: [
-<?php 
-            
-$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
-FROM Data_WineBerry.Datos 
-WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
-GROUP BY unix_timestamp(DatosDateTime) DIV 60";
-
-
-$results = $data_mysqli->query($query);
-$serie = "";
-
-if ($results) {
-	$contador = $results->num_rows;
-	while ($row = $results->fetch_row()){	
-		if ($contador != 1)
-		echo $row[0].",";
-		else 
-		echo $row[0];
-		$contador --;
-	}
-	$serie = substr($serie,0,-1)."";
-	$results->free();
-}
-
-echo $serie;
-
-?>
-/*
-                [Date.UTC(1970, 9, 21), 0],
-                [Date.UTC(1970, 10, 4), 0.38],
-                [Date.UTC(1970, 10, 9), 0.35],
-                [Date.UTC(1970, 10, 27), 0.3],
-                [Date.UTC(1970, 11, 2), 0.38],
-                [Date.UTC(1970, 11, 26), 0.38],
-                [Date.UTC(1970, 11, 29), 0.57],
-                [Date.UTC(1971, 0, 11), 0.89],
-                [Date.UTC(1971, 0, 26), 0.82],
-                [Date.UTC(1971, 1, 3), 1.12],
-                [Date.UTC(1971, 1, 11), 1.22],
-                [Date.UTC(1971, 1, 25), 1.3],
-                [Date.UTC(1971, 2, 11), 1.28],
-                [Date.UTC(1971, 3, 11), 1.29],
-                [Date.UTC(1971, 4, 1), 1.95],
-                [Date.UTC(1971, 4, 5), 2.32],
-                [Date.UTC(1971, 4, 19), 1.25],
-                [Date.UTC(1971, 5, 3), 0] */
-            ]
-        }],
-        navigation: {
-            menuItemStyle: {
-                fontSize: '10px'
-            }
-        }
+        });
     });
 });
 
@@ -281,15 +189,15 @@ $("input[class=boton_x]").switchButton({
 	$("#rf-switch-frio").change( function() {
 		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
 if ($("#rf-switch-frio").is(":checked")) {
-	//alert("checked");	
+	//alert("checked");
 	$.get(myUrl);
 
 
-    // checkbox is checked 
+    // checkbox is checked
 } else {
 	//alert("unchecked");
 	$.get(myUrl);
-    // checkbox is not checked 
+    // checkbox is not checked
 }
 });
 
@@ -299,14 +207,14 @@ if ($("#rf-switch-frio").is(":checked")) {
 	$("#rf-switch-calor").change( function() {
 		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
 if ($("#rf-switch-calor").is(":checked")) {
-	alert("checked");	
+	alert("checked");
 	$.get(myUrl);
 
-    // checkbox is checked 
+    // checkbox is checked
 } else {
 	alert("unchecked");
 	$.get(myUrl);
-    // checkbox is not checked 
+    // checkbox is not checked
 }
 });
 

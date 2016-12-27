@@ -30,7 +30,7 @@ if ($results) {
 		echo "
 	        <div class=\"small-box bg-aqua\">
             <div class=\"inner\" id=\"humedad\">
-                <h3>74%</h3>
+                <h3>$row[0]</h3>
                 <p>Humedad</p>
             </div>
             <div class=\"icon\">
@@ -38,7 +38,7 @@ if ($results) {
             </div>
             <a href=\"#\" class=\"small-box-footer\" onclick=\"$('#cuerpo').load('pages_informes/tempamb.php');\">Ver más <i class=\"fa fa-arrow-circle-right\"></i></a>
         </div>
-        <h6 class=\"text-center\">Fecha última medición: Hace 3 minutos</h6>
+        <h6 class=\"text-center\">Fecha última medición: Hace $row[1] minutos</h6>
         </div>
 		";
 	}else if ($POSICION == "CUBA"){

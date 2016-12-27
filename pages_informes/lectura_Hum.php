@@ -30,7 +30,7 @@ if ($results) {
 		echo "
 	        <div class=\"small-box bg-aqua\">
             <div class=\"inner\" id=\"humedad\">
-                <h3>$row[0]</h3>
+                <h3>$row[0] %</h3>
                 <p>Humedad</p>
             </div>
             <div class=\"icon\">

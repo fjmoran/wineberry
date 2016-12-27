@@ -117,14 +117,14 @@ var auto_refresh = setInterval(
 function ()
 {
 $('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE&DEVICE=27').fadeIn("slow");
-$('#HumedadAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE&DEVICE=27').fadeIn("slow");
+$('#HumedadAmbiente').load('pages_informes/lectura_Hum.php?POSICION=AMBIENTE&DEVICE=27').fadeIn("slow");
 $('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-011564b535ff').fadeIn("slow");
 $('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-0115649829ff').fadeIn("slow");
 }, 10000);
 
 $(document).ready(function(){
 $('#TemperaturaAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE&DEVICE=27');
-$('#HumedadAmbiente').load('pages_informes/lectura_temp.php?POSICION=AMBIENTE&DEVICE=27');
+$('#HumedadAmbiente').load('pages_informes/lectura_Hum.php?POSICION=AMBIENTE&DEVICE=27');
 $('#CUBA1').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-011564b535ff');
 $('#CUBA2').load('pages_informes/lectura_temp.php?POSICION=CUBA&DEVICE=28-0115649829ff');
 });

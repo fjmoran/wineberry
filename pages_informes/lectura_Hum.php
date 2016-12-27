@@ -18,7 +18,7 @@ $POSICION = $_GET['POSICION'];
 
 $query = "select DatosHum_perc, TIMESTAMPDIFF(MINUTE,DatosHumDateTime,NOW()) as DIFF FROM DatosHum ";
 if (!(empty($DEVICE))) {
-	$query .= " WHERE DatosDevId = '$DEVICE' ";
+	$query .= " WHERE DatosHumDevId = '$DEVICE' ";
 }
 
 $query .= " ORDER BY DatosDateTime DESC LIMIT 1";

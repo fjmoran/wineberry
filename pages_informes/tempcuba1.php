@@ -4,6 +4,16 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once "../recursos/zhi/CreaConnv2.php";
+
+if ((isset($_GET['RASPBERRY'])) && (!empty($_GET['RASPBERRY']))){
+    $RASPBERRY = $_GET['RASPBERRY'];
+}
+
+if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
+    $DEVICE = $_GET['DEVICE'];
+    //echo "DEVICE = $DEVICE";
+}
+
 ?>
 <div class="col-md-1"></div>
 <div class="col-md-10">
@@ -191,7 +201,7 @@ $(function () {
             
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
 FROM Data_WineBerry.Datos 
-WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+WHERE DatosDevId = '$DEVICE' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos where DatosDevId = '$DEVICE') - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 $results = $data_mysqli->query($query);
@@ -221,7 +231,7 @@ echo $serie;
             
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
 FROM Data_WineBerry.Datos 
-WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos) - interval 1 hour
+WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos where DatosDevId = ) - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 

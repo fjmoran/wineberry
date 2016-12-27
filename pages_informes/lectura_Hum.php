@@ -16,7 +16,7 @@ if ((isset($_GET['DEVICE'])) && (!empty($_GET['DEVICE']))){
 
 $POSICION = $_GET['POSICION'];
 
-$query = "select DatosHum_perc, TIMESTAMPDIFF(MINUTE,DatosDateTime,NOW()) as DIFF FROM DatosHum ";
+$query = "select DatosHum_perc, TIMESTAMPDIFF(MINUTE,DatosHumDateTime,NOW()) as DIFF FROM DatosHum ";
 if (!(empty($DEVICE))) {
 	$query .= " WHERE DatosDevId = '$DEVICE' ";
 }

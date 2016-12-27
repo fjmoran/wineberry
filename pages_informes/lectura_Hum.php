@@ -21,7 +21,7 @@ if (!(empty($DEVICE))) {
 	$query .= " WHERE DatosHumDevId = '$DEVICE' ";
 }
 
-$query .= " ORDER BY DatosDateTime DESC LIMIT 1";
+$query .= " ORDER BY DatosHumDateTime DESC LIMIT 1";
 
 $results = $data_mysqli->query($query);
 if ($results) {

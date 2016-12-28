@@ -199,7 +199,7 @@ $(function () {
             data: [
 <?php 
             
-$query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c),2),']'))
+$query = "SELECT CONCAT(\"[Date.UTC(\",date_format(DatosDateTime,\"%Y,\"),date_format(DatosDateTime,\"%m\")-1,date_format(DatosDateTime,\",%e\"),date_format(DatosDateTime,\",%I,%i)\"),FORMAT(AVG(DatosTemp_c),2),\"]\")
 FROM Data_WineBerry.Datos 
 WHERE DatosDevId = '$DEVICE' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos where DatosDevId = '$DEVICE') - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
@@ -231,7 +231,7 @@ echo $serie;
             
 $query = "SELECT concat_ws(',',date_format(DatosDateTime,\"[Date.UTC(%Y,%m,%e,%I,%i)\"), CONCAT(FORMAT(AVG(DatosTemp_c + 1),2),\"]\"))
 FROM Data_WineBerry.Datos 
-WHERE DatosDevId = '28-011564b535ff' AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos where DatosDevId = ) - interval 1 hour
+WHERE DatosDevId = $DEVICE AND DatosDateTime > (select max(DatosDateTime) from Data_WineBerry.Datos where DatosDevId = $DEVICE) - interval 1 hour
 GROUP BY unix_timestamp(DatosDateTime) DIV 60";
 
 
@@ -289,7 +289,7 @@ $("input[class=boton_x]").switchButton({
 
 <script type="text/javascript">
 	$("#rf-switch-frio").change( function() {
-		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
 if ($("#rf-switch-frio").is(":checked")) {
 	//alert("checked");	
 	$.get(myUrl);
@@ -307,7 +307,7 @@ if ($("#rf-switch-frio").is(":checked")) {
 
 <script type="text/javascript">
 	$("#rf-switch-calor").change( function() {
-		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=28";
+		myUrl = "https://7a7b65777e.dataplicity.io/cgi-bin/Change_Status_Pin?pin=27";
 if ($("#rf-switch-calor").is(":checked")) {
 	alert("checked");	
 	$.get(myUrl);

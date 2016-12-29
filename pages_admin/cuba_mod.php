@@ -33,7 +33,7 @@ if (($_GET['txt_search'])&&($_GET['select_field'])){
 }
 
 $_GET['callerURL'] = $_SERVER ['PHP_SELF'];
-$_GET['table'] = $db.".Pais"; //Aca se define la tabla donde se esta trabajando
+$_GET['table'] = $data_db.".Cuba"; //Aca se define la tabla donde se esta trabajando ($db es la BD de administracion y $data_db es la db de los datos del sistema)
 
 ?>
 
@@ -50,17 +50,17 @@ $_GET['table'] = $db.".Pais"; //Aca se define la tabla donde se esta trabajando
 	include("../recursos/zhi/basic_search.php");
 	?>
 
-		<a onclick="$('#cuerpo').load('pages_admin/pais_crear.php');" href="#pais_crear" role="button" class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
+		<a onclick="$('#cuerpo').load('pages_admin/cuba_crear.php');" href="#pais_crear" role="button" class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
 	<h4>Países registrados en el sistema</h4>
 
 	<?php 
-	$_GET['select'] = "nombrePais as Pais, intcodePais as Codigo, activoPais as Estado";
-	$_GET['orderby'] = "activoPais DESC, nombrePais";
-	$_GET['tabla']['width'] = "60%, 15%, 15%";
-	$_GET['tabla']['title'] = "Nombre, Código, Estado";
+	$_GET['select'] = "nombreCuba as Cuba, tobjetivoPais as TºObjetivo, ubicacionCuba as Ubicacion, activoPais as Estado";
+	$_GET['orderby'] = "activoCuba DESC, ubicacionCuba";
+	$_GET['tabla']['width'] = "50%, 20%, 20%, 10%";
+	$_GET['tabla']['title'] = "Cuba, Tº Objetivo, Ubicación, Estado";
 	$_GET['acciones'] = "true";
-	$_GET['accion']['editar']['URL'] = "pages_admin/pais_editar.php";
+	$_GET['accion']['editar']['URL'] = "pages_admin/cuba_editar.php";
 	$_GET['accion']['editar']['title'] = "Editar";
 	$_GET['accion']['editar']['class'] = "glyphicon glyphicon-pencil";
 	$_GET['accion']['activar']['URL'] = "pages_admin/pais_estado.php";
@@ -77,7 +77,7 @@ $_GET['table'] = $db.".Pais"; //Aca se define la tabla donde se esta trabajando
 	<?php
 
 		if ($_GET['tampag'] < $total){
-			echo paginar($_GET['pagina'],$total,$_GET['tampag'],"pages_admin/pais_mod.php?".http_build_query($_GET)."&tampag=".$_GET['tampag']."&pagina=","#pais_mod");
+			echo paginar($_GET['pagina'],$total,$_GET['tampag'],"pages_admin/cuba_mod.php?".http_build_query($_GET)."&tampag=".$_GET['tampag']."&pagina=","#cuba_mod");
 		}
 	?>
 	</div>

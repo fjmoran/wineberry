@@ -8,7 +8,9 @@ $_GET['table'] = "Data_WineBerry".".Cuba";
 $_GET['select'] = "nombreCuba as Cuba, ubicacionCuba as Ubicacion, tobjetivoCuba as Objetivo, tminimaCuba as Minima, tmaximaCuba as Maxima, rangotoleranciaTCuba as Rango, activoCuba as Estado, descripcionCuba as Descripcion";
 $_GET['jquery'] = "$('#cuerpo').load('pages_admin/cuba_mod.php');";
 
+if ($_GET['debug']) {
 print_r($_GET);
+}
 
 require("../recursos/zhi/insert_table_generic.php");
 

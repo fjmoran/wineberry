@@ -8,7 +8,7 @@ if (($_GET['debug']) || ($_POST['debug'])){
 	$debug = 1;
 }
 
-$debug = 1;
+//$debug = 1;
 
 // Acá se definen los campos por los cuales se puede realizar las busquedas (basic_search)
 $campos_busqueda = array("Cuba"=>"nombreCuba","Ubicación"=>"ubicacionCuba");

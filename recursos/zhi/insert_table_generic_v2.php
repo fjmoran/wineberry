@@ -65,6 +65,7 @@ foreach ($info_campo as $valor) {
   }
   switch ($valor->type) {
     case 4: // si el campo es tipo FLOAT
+    case 5: // si el campo es tipo DOUBLE
     case 252: // si el campo es de tipo TEXT
     case 253:  // si el campo es de tipo VARCHAR
     // Todos se muestran como una input de texto

@@ -6,7 +6,7 @@
 <?php 
 
 $_GET['table'] = "Data_WineBerry".".Cuba";
-$_GET['select'] = "nombreCuba as Cuba, ubicacionCuba as Ubicacion, tobjetivoCuba as Objetivo, tminimaCuba as Minima, tmaximaCuba as Maxima, rangotoleranciaCuba as Rango, activoCuba as Estado, descripcionCuba as Descripcion";
+$_GET['select'] = "nombreCuba as Cuba, ubicacionCuba as Ubicacion, tobjetivoCuba as Objetivo, tminimaCuba as Minima, tmaximaCuba as Maxima, rangotoleranciaTCuba as Rango, activoCuba as Estado, descripcionCuba as Descripcion";
 $_GET['jquery'] = "$('#cuerpo').load('pages_admin/cuba_mod.php');";
 
 print_r($_GET);

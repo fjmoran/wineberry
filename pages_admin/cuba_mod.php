@@ -8,18 +8,10 @@ if (($_GET['debug']) || ($_POST['debug'])){
 	$debug = 1;
 }
 
-#$debug = 1;
-if ($debug){
-echo "GET : ";
-print_r($_GET);
-echo "<br>";
-echo "POST : ";
-print_r($_POST);
-echo "<br>";
-}
+$debug = 1;
 
 // Acá se definen los campos por los cuales se puede realizar las busquedas (basic_search)
-$campos_busqueda = array("País"=>"nombrePais","Codigo"=>"intcodePais");
+$campos_busqueda = array("Cuba"=>"nombreCuba","Ubicación"=>"ubicacionCuba");
 
 if (!isset($_GET['pagina'])){ $_GET['pagina']=1;} // pagina inicial
 if (!isset($_GET['tampag'])){ $_GET['tampag']=10;} // cantidad de items por pagina
@@ -35,11 +27,20 @@ if (($_GET['txt_search'])&&($_GET['select_field'])){
 $_GET['callerURL'] = $_SERVER ['PHP_SELF'];
 $_GET['table'] = $data_db.".Cuba"; //Aca se define la tabla donde se esta trabajando ($db es la BD de administracion y $data_db es la db de los datos del sistema)
 
+if ($debug){
+echo "GET : ";
+print_r($_GET);
+echo "<br>";
+echo "POST : ";
+print_r($_POST);
+echo "<br>";
+}
+
 ?>
 
 <div class="col-md-11">
- 	<h2>Países</h2>
-	<h5>Administración de países</h5>
+ 	<h2>Cubas</h2>
+	<h5>Administración de cubas</h5>
 	<br>
 	<?php
 	if ((isset($_GET['txt_search'])) && ($debug)) {
@@ -50,9 +51,9 @@ $_GET['table'] = $data_db.".Cuba"; //Aca se define la tabla donde se esta trabaj
 	include("../recursos/zhi/basic_search.php");
 	?>
 
-		<a onclick="$('#cuerpo').load('pages_admin/cuba_crear.php');" href="#pais_crear" role="button" class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
+		<a onclick="$('#cuerpo').load('pages_admin/cuba_crear.php');" href="#cuba_crear" role="button" class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a>
 
-	<h4>Países registrados en el sistema</h4>
+	<h4>Cubas registradas en el sistema</h4>
 
 	<?php 
 	$_GET['select'] = "nombreCuba as Cuba, tobjetivoPais as TºObjetivo, ubicacionCuba as Ubicacion, activoPais as Estado";

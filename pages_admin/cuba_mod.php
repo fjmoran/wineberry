@@ -56,7 +56,7 @@ echo "<br>";
 	<h4>Cubas registradas en el sistema</h4>
 
 	<?php 
-	$_GET['select'] = "nombreCuba as Cuba, tobjetivoPais as TempObjetivo, ubicacionCuba as Ubicacion, activoPais as Estado";
+	$_GET['select'] = "nombreCuba as Cuba, tobjetivoCuba as TempObjetivo, ubicacionCuba as Ubicacion, activoCuba as Estado";
 	$_GET['orderby'] = "activoCuba DESC, ubicacionCuba";
 	$_GET['tabla']['width'] = "50%, 20%, 20%, 10%";
 	$_GET['tabla']['title'] = "Cuba, Tº Objetivo, Ubicación, Estado";

@@ -1,6 +1,6 @@
 <div class="col-md-11">
- <h2>Crear País</h2>
- <h5>Creación de nuevos países en el sistema</h5><br>
+ <h2>Crear Cuba</h2>
+ <h5>Creación de nuevas cubas en el sistema</h5><br>
 
 
 <?php 

@@ -1,7 +1,7 @@
 <?php
 
 require_once("../recursos/zhi/CreaConnv2.php");
-require_once ("../recursos/zhi/auth.php");
+//require_once ("../recursos/zhi/auth.php");
 require_once ("../recursos/zhi/funciones.php");
 
 if (($_GET['debug']) || ($_POST['debug'])){

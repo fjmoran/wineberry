@@ -5,9 +5,7 @@
 
 <?php 
 
-require_once("CreaConnv2.php");
-
-$_GET['table'] = $data_bd.".Cuba";
+$_GET['table'] = "Data_WineBerry".".Cuba";
 $_GET['select'] = "nombreCuba as Cuba, ubicacionCuba as Ubicacion, activoCuba as Estado";
 $_GET['jquery'] = "$('#cuerpo').load('pages_admin/cuba_mod.php');";
 
